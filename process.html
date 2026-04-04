@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>How It Works | You Better Walk | Dog Walking &amp; Pet Sitting | Columbus, Ohio</title>
+  <meta name="description" content="How You Better Walk works - from first contact to ongoing pet care. Columbus, Ohio dog walking and pet sitting."/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://youbetterwalk.com/process.html"/>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+  <link rel="manifest" href="/images/site.webmanifest"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --cream:#FAF6F0;--cream-mid:#F0E8DC;--cream-dark:#DFD1BE;
+      --red:#8B1A1A;--red-hover:#A52020;
+      --charcoal:#261A1A;--warm-gray:#5C5050;--white:#FFFFFF;
+      --serif:'Cormorant Garamond',Georgia,serif;
+      --sans:'Jost',sans-serif;
+      --nav-h:196px;
+    }
+    body{background:var(--cream);color:var(--charcoal);font-family:var(--sans);font-size:18px;line-height:1.78;overflow-x:hidden}
+    a{color:var(--red);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* NAV */
+    nav{
+      position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:300;
+      background:var(--white);border-bottom:1px solid #E8DFDA;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 60px;
+    }
+    .nav-logo img{height:160px;width:auto;display:block}
+    .nav-links{display:flex;align-items:center;gap:44px;list-style:none}
+    .nav-links a{
+      font-family:var(--sans);font-size:16px;font-weight:500;
+      letter-spacing:0.12em;text-transform:uppercase;color:var(--charcoal);
+      position:relative;transition:color 0.2s;
+    }
+    .nav-links a::after{
+      content:'';position:absolute;bottom:-3px;left:0;right:0;
+      height:1.5px;background:var(--red);transform:scaleX(0);transition:transform 0.2s;
+    }
+    .nav-links a:hover{color:var(--red);text-decoration:none}
+    .nav-links a:hover::after{transform:scaleX(1)}
+    .nav-cta{
+      background:var(--red)!important;color:var(--white)!important;
+      padding:13px 28px;border-radius:6px;font-size:15px!important;font-weight:600!important;
+      letter-spacing:0.15em;text-transform:uppercase;transition:background 0.2s,transform 0.15s;
+    }
+    .nav-cta::after{display:none!important}
+    .nav-cta:hover{background:var(--red-hover)!important;transform:translateY(-1px);text-decoration:none!important}
+    .nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+    .nav-burger span{display:block;width:26px;height:2px;background:var(--charcoal);border-radius:2px;transition:transform 0.2s}
+    .nav-drawer{
+      display:none;position:fixed;top:0;right:0;bottom:0;width:280px;
+      background:var(--white);z-index:350;padding:32px 28px;
+      transform:translateX(100%);transition:transform 0.3s;flex-direction:column;
+    }
+    .nav-drawer.open{transform:translateX(0)}
+    .nav-drawer ul{list-style:none;display:flex;flex-direction:column;gap:0;flex:1}
+    .nav-drawer ul li a{
+      display:block;font-family:var(--sans);font-size:18px;font-weight:500;
+      letter-spacing:0.1em;text-transform:uppercase;color:var(--charcoal);
+      padding:18px 0;border-bottom:1px solid var(--cream-dark);transition:color 0.2s;
+    }
+    .nav-drawer ul li a:hover{color:var(--red);text-decoration:none}
+    .nav-drawer ul li:last-child a{
+      margin-top:32px;background:var(--red);color:var(--white);
+      padding:16px 24px;border-radius:6px;text-align:center;border:none;
+    }
+    .nav-drawer ul li:last-child a:hover{background:var(--red-hover)}
+    .drawer-close{
+      align-self:flex-end;background:none;border:none;cursor:pointer;
+      font-size:28px;line-height:1;color:var(--charcoal);margin-bottom:24px;
+    }
+
+    /* HERO */
+    .page-hero{
+      padding:calc(var(--nav-h) + 72px) 60px 80px;
+      max-width:1100px;margin:0 auto;
+    }
+    .page-eyebrow{
+      font-family:var(--sans);font-size:13px;font-weight:700;
+      letter-spacing:0.28em;text-transform:uppercase;color:var(--red);margin-bottom:18px;
+    }
+    h1{
+      font-family:var(--serif);font-size:clamp(52px,6vw,86px);
+      font-weight:700;line-height:1.0;color:var(--charcoal);margin-bottom:28px;
+    }
+    h1 em{font-style:italic;color:var(--red)}
+    .hero-intro{
+      font-family:var(--sans);font-size:22px;font-weight:300;
+      line-height:1.85;color:var(--warm-gray);max-width:640px;margin-bottom:0;
+    }
+
+    /* DIVIDER */
+    .divider{width:56px;height:3px;background:var(--red);margin:32px 0}
+
+    /* STEPS SECTION */
+    .steps-section{padding:0 60px 120px;max-width:1100px;margin:0 auto}
+
+    .step{
+      display:grid;grid-template-columns:80px 1fr;gap:0 48px;
+      padding:56px 0;border-bottom:1px solid var(--cream-dark);
+      position:relative;
+    }
+    .step:last-child{border-bottom:none}
+
+    .step-number{
+      font-family:var(--serif);font-size:72px;font-weight:700;font-style:italic;
+      color:var(--cream-dark);line-height:1;padding-top:4px;
+      user-select:none;
+    }
+
+    .step-body{}
+    .step-label{
+      font-family:var(--sans);font-size:12px;font-weight:700;
+      letter-spacing:0.28em;text-transform:uppercase;color:var(--red);margin-bottom:12px;
+    }
+    .step-title{
+      font-family:var(--serif);font-size:clamp(32px,3.5vw,46px);
+      font-weight:700;line-height:1.1;color:var(--charcoal);margin-bottom:20px;
+    }
+    .step-title em{font-style:italic;color:var(--red)}
+    .step-text{
+      font-family:var(--sans);font-size:19px;font-weight:300;
+      line-height:1.9;color:var(--warm-gray);max-width:560px;margin-bottom:20px;
+    }
+    .step-detail{
+      display:inline-block;
+      background:var(--cream-mid);border-left:3px solid var(--red);
+      padding:14px 20px;border-radius:0 4px 4px 0;
+      font-family:var(--sans);font-size:17px;font-weight:400;
+      color:var(--charcoal);line-height:1.65;max-width:520px;
+      margin-top:4px;
+    }
+    .step-detail strong{font-weight:700;color:var(--red)}
+
+    /* CLOSING CTA */
+    .process-cta{
+      background:var(--charcoal);padding:80px 60px;text-align:center;
+    }
+    .process-cta .page-eyebrow{color:rgba(255,255,255,.45)}
+    .process-cta h2{
+      font-family:var(--serif);font-size:clamp(38px,4.5vw,64px);
+      font-weight:700;color:var(--white);margin-bottom:20px;line-height:1.05;
+    }
+    .process-cta h2 em{font-style:italic;color:var(--red)}
+    .process-cta p{
+      font-family:var(--sans);font-size:19px;font-weight:300;
+      color:rgba(255,255,255,.65);max-width:520px;margin:0 auto 40px;line-height:1.8;
+    }
+    .btn-primary{
+      display:inline-block;background:var(--red);color:var(--white);
+      padding:18px 52px;font-family:var(--sans);font-size:17px;font-weight:600;
+      letter-spacing:0.15em;text-transform:uppercase;border-radius:6px;
+      transition:background 0.2s,transform 0.15s,box-shadow 0.2s;
+    }
+    .btn-primary:hover{background:var(--red-hover);transform:translateY(-2px);box-shadow:0 10px 28px rgba(139,26,26,.3);text-decoration:none}
+
+    /* FOOTER */
+    footer{
+      background:var(--charcoal);color:rgba(255,255,255,.55);
+      font-family:var(--sans);font-size:14px;
+      padding:56px 60px 40px;
+    }
+    .footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:48px;margin-bottom:40px;flex-wrap:wrap}
+    .footer-brand{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--white);margin-bottom:6px}
+    .footer-brand em{color:var(--red);font-style:italic}
+    .footer-tagline{font-size:14px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:10px}
+    .footer-contact-line a{color:rgba(255,255,255,.55)}
+    .footer-contact-line a:hover{color:var(--white)}
+    .footer-links{list-style:none;display:flex;flex-direction:column;gap:10px;text-align:right}
+    .footer-links a{color:rgba(255,255,255,.55);transition:color 0.2s}
+    .footer-links a:hover{color:var(--white);text-decoration:none}
+    .footer-copy{font-size:13px;color:rgba(255,255,255,.25);border-top:1px solid rgba(255,255,255,.08);padding-top:24px}
+
+    /* MOBILE */
+    @media(max-width:900px){
+      :root{--nav-h:80px}
+      nav{padding:0 20px;height:var(--nav-h)}
+      .nav-logo img{height:56px}
+      .nav-links{display:none}
+      .nav-burger{display:flex}
+      .nav-drawer{display:flex}
+      .page-hero{padding:calc(var(--nav-h) + 48px) 24px 60px}
+      .steps-section{padding:0 24px 80px}
+      .step{grid-template-columns:52px 1fr;gap:0 24px;padding:40px 0}
+      .step-number{font-size:52px}
+      .process-cta{padding:60px 24px}
+      footer{padding:48px 24px 32px}
+      .footer-top{flex-direction:column;gap:32px}
+      .footer-links{text-align:left}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <a href="index.html"><img src="images/youbetterwalkheader.gif" alt="You Better Walk"/></a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#values">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#team">Team</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Get in Touch</a></li>
+  </ul>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-drawer" id="navDrawer">
+  <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
+  <ul>
+    <li><a href="index.html#values">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#team">Team</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="index.html#contact">Get in Touch</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <p class="page-eyebrow">Our Process</p>
+  <h1>How this <em>works.</em></h1>
+  <div class="divider"></div>
+  <p class="hero-intro">From the first message to an ongoing care relationship, here is what you should expect: a clear path to someone your pet will look forward to seeing.</p>
+</div>
+
+<!-- STEPS -->
+<div class="steps-section">
+
+  <div class="step">
+    <div class="step-number">01</div>
+    <div class="step-body">
+      <p class="step-label">Getting Started</p>
+      <h2 class="step-title">Reach <em>out.</em></h2>
+      <p class="step-text">Use the contact form on the site or send a direct email. Tell us a little about your pet - their name, their species, any quirks worth knowing about. There are no wrong answers and nothing too small to mention. The more you share upfront, the better the first conversation goes.</p>
+      <div class="step-detail"><strong>Response time:</strong> Within 24 hours, usually sooner.</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-number">02</div>
+    <div class="step-body">
+      <p class="step-label">First Connection</p>
+      <h2 class="step-title">We <em>connect.</em></h2>
+      <p class="step-text">We'll follow up to learn more and answer any questions you have. This is also when we share a short pet profile form - basic health history, emergency contacts, vet information, routine, and behavioral notes. It takes about ten minutes and helps us arrive at the meet and greet already knowing your pet on paper.</p>
+      <div class="step-detail"><strong>Note:</strong> We may ask follow-up questions about specific needs before scheduling a meet and greet. This is normal - we want to make sure we're the right fit before either of us commits to anything.</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-number">03</div>
+    <div class="step-body">
+      <p class="step-label">The Meeting</p>
+      <h2 class="step-title">Meet and <em>greet.</em></h2>
+      <p class="step-text">We come to you at home, with your pet present. We'll talk about routines, your pet's personality, and what good care looks like for your needs. There is no pitch and no pressure. Just like a visit from a neighbor. If it feels right for both of us, we move forward. If either side isn't feeling it, we part ways with no hard feelings.</p>
+      <div class="step-detail"><strong>Always free. Always at your home. Never rushed.</strong> This meeting is as much for your pet to meet us as it is for us to meet them.</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-number">04</div>
+    <div class="step-body">
+      <p class="step-label">Making It Official</p>
+      <h2 class="step-title">Paperwork and <em>access.</em></h2>
+      <p class="step-text">Once we've agreed we're a good match, we finalize the pet profile, sign the service agreement, and handle key or access code exchange. We keep access information in secure storage and it never leaves the service relationship.</p>
+      <div class="step-detail"><strong>Fully insured.</strong> You Better Walk carries liability insurance through <a href="https://www.petcareins.com" target="_blank" rel="noopener" style="color:var(--red)">Pet Care Insurance</a>, covering general liability, professional liability, and care, custody, and control of animals in our care. Proof of coverage available on request.</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-number">05</div>
+    <div class="step-body">
+      <p class="step-label">Day One</p>
+      <h2 class="step-title">The first <em>visit.</em></h2>
+      <p class="step-text">The first visit is always done with a little extra attention and patience. New places, new routines, new person - pets notice all of it. We take it at their pace. After the visit, you get a photo report card on how it went: what they did, how they felt, anything worth knowing.</p>
+      <div class="step-detail"><strong>Every visit includes:</strong> a photo report card sent directly to you when we're done.</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-number">06</div>
+    <div class="step-body">
+      <p class="step-label">The Long Game</p>
+      <h2 class="step-title">Ongoing <em>care.</em></h2>
+      <p class="step-text">Over time we learn your pet's moods, their favorite routes, the signs that something is off. Scheduling, adjustments, and questions go straight to us, not an app.</p>
+      <div class="step-detail"><strong>Direct line, always.</strong> You will always be communicating with the person who cared for your pet.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA -->
+<div class="process-cta">
+  <p class="page-eyebrow">Ready When You Are</p>
+  <h2>Let's talk about<br>your <em>pet.</em></h2>
+  <p>The first step is just a message. Tell us about your animal, your schedule, your situation. We&rsquo;ll take it from there.</p>
+  <a href="index.html#contact" class="btn-primary">Get in Touch</a>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <p class="footer-brand">You <em>Better</em> Walk</p>
+      <p class="footer-tagline">Walking &nbsp;&bull;&nbsp; Pet Sitting &nbsp;&bull;&nbsp; Done with Love</p>
+      <p class="footer-contact-line">
+        <a href="mailto:youbetterwalkllc@gmail.com">youbetterwalkllc@gmail.com</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp; Upper Arlington, Columbus, Ohio
+      </p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="index.html#values">About</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#team">Team</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="terms.html">Terms of Service</a></li>
+    </ul>
+  </div>
+  <p class="footer-copy">&copy; 2026 You Better Walk LLC &nbsp;&bull;&nbsp; Ohio &nbsp;&bull;&nbsp; All Rights Reserved</p>
+</footer>
+
+<script>
+  const burger  = document.getElementById('navBurger');
+  const drawer  = document.getElementById('navDrawer');
+  const closer  = document.getElementById('drawerClose');
+  function openDrawer()  { drawer.classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeDrawer() { drawer.classList.remove('open'); document.body.style.overflow=''; }
+  burger.addEventListener('click', () => drawer.classList.contains('open') ? closeDrawer() : openDrawer());
+  closer.addEventListener('click', closeDrawer);
+  document.querySelectorAll('.nav-drawer a').forEach(l => l.addEventListener('click', closeDrawer));
+</script>
+</body>
+</html>

@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Service Agreement — You Better Walk</title>
+  <meta name="robots" content="noindex"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <!--
+  ═══════════════════════════════════════════════════════
+  SETUP INSTRUCTIONS — READ BEFORE DEPLOYING
+  ═══════════════════════════════════════════════════════
+
+  This form uses EmailJS to send signed copies to both you
+  and your client. It is free for up to 200 emails/month.
+
+  STEP 1: Create a free account at https://www.emailjs.com
+
+  STEP 2: Add an Email Service (Gmail works; connect your
+  youbetterwalkllc@gmail.com account).
+  Note your SERVICE ID (looks like "service_xxxxxxx").
+
+  STEP 3: Create an Email Template. Use these variables:
+    {{client_name}}      {{client_email}}
+    {{client_phone}}     {{client_address}}
+    {{pet_name}}         {{pet_breed}}
+    {{pet_age}}          {{pet_vet}}
+    {{pet_vet_phone}}    {{pet_medical}}
+    {{services}}         {{walk_frequency}}
+    {{start_date}}       {{rate_notes}}
+    {{emergency_name}}   {{emergency_phone}}
+    {{photo_consent}}    {{timestamp}}
+    {{signature_data}}   (this is a base64 PNG — see note below)
+
+  Recommended: Create two templates.
+    Template A (to you): full details + signature image
+    Template B (to client): clean confirmation copy
+
+  Note your TEMPLATE IDs (looks like "template_xxxxxxx").
+
+  STEP 4: Find your PUBLIC KEY in EmailJS Account > API Keys.
+
+  STEP 5: Replace the three placeholder values below:
+    YOUR_PUBLIC_KEY
+    YOUR_SERVICE_ID
+    YOUR_OWNER_TEMPLATE_ID
+    YOUR_CLIENT_TEMPLATE_ID
+
+  STEP 6: Deploy service-agreement.html to your GitHub repo.
+  Keep this file out of your main nav - it is a tool for
+  you to send clients, not a public-facing page.
+
+  USAGE: Send the link directly to a new client before
+  the meet and greet, or have them fill it out on your
+  phone during the meeting. Both parties receive a copy
+  immediately on submission.
+  ═══════════════════════════════════════════════════════
+  -->
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #FAF6F0; --cream-mid: #F0E8DC; --cream-dark: #DFD1BE;
+      --red: #8B1A1A; --red-hover: #A52020;
+      --charcoal: #261A1A; --warm-gray: #5C5050; --white: #FFFFFF;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Jost', sans-serif;
+      --max: 720px;
+    }
+    body {
+      background: var(--cream); color: var(--charcoal);
+      font-family: var(--sans); font-size: 16px; line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ─────────────────────────────────── */
+    .doc-header {
+      background: var(--charcoal);
+      padding: 28px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .doc-header img { height: 52px; width: auto; }
+    .doc-header-right { text-align: right; }
+    .doc-header-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.28em;
+      text-transform: uppercase; color: rgba(255,255,255,.4);
+      margin-bottom: 4px;
+    }
+    .doc-header-title {
+      font-family: var(--serif); font-size: 20px; font-weight: 700;
+      font-style: italic; color: var(--white);
+    }
+
+    /* ── PROGRESS BAR ───────────────────────────── */
+    .progress-bar {
+      height: 3px; background: var(--cream-dark);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .progress-fill {
+      height: 100%; background: var(--red);
+      width: 0%; transition: width 0.4s ease;
+    }
+
+    /* ── MAIN WRAP ──────────────────────────────── */
+    .wrap {
+      max-width: var(--max); margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ── SECTION BLOCKS ─────────────────────────── */
+    .form-section {
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    .form-section:last-of-type { border-bottom: none; }
+
+    .section-header { margin-bottom: 28px; }
+    .section-number {
+      font-family: var(--serif); font-size: 56px; font-weight: 700;
+      color: var(--cream-dark); line-height: 1; margin-bottom: -8px;
+      user-select: none;
+    }
+    .section-title {
+      font-family: var(--serif); font-size: 28px; font-weight: 700;
+      color: var(--charcoal); line-height: 1.1;
+    }
+    .section-title em { font-style: italic; color: var(--red); }
+    .section-intro {
+      font-size: 14px; color: var(--warm-gray); font-weight: 300;
+      margin-top: 8px; line-height: 1.7;
+    }
+
+    /* ── FORM FIELDS ────────────────────────────── */
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .field-row.full { grid-template-columns: 1fr; }
+    .field-row.thirds { grid-template-columns: 1fr 1fr 1fr; }
+
+    .field { display: flex; flex-direction: column; }
+    .field-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--warm-gray); margin-bottom: 7px;
+    }
+    .field-label .req { color: var(--red); }
+
+    input[type="text"], input[type="email"], input[type="tel"],
+    input[type="date"], input[type="url"], select, textarea {
+      padding: 13px 15px; background: var(--white);
+      border: 1.5px solid var(--cream-dark); border-radius: 6px;
+      font-family: var(--sans); font-size: 15px; color: var(--charcoal);
+      transition: border-color 0.2s; -webkit-appearance: none; appearance: none;
+      width: 100%;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none; border-color: var(--red);
+    }
+    input::placeholder, textarea::placeholder { color: var(--cream-dark); }
+    textarea { min-height: 90px; resize: vertical; line-height: 1.6; }
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235C5050' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center;
+      padding-right: 38px; cursor: pointer;
+    }
+
+    /* ── CHECKBOXES ─────────────────────────────── */
+    .check-group { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+    .check-item { position: relative; }
+    .check-item input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .check-label {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 13px 16px; background: var(--white);
+      border: 1.5px solid var(--cream-dark); border-radius: 6px;
+      cursor: pointer; transition: border-color 0.2s, background 0.2s;
+      font-size: 14px; font-weight: 300; color: var(--warm-gray); line-height: 1.5;
+    }
+    .check-item input:checked + .check-label {
+      border-color: var(--red); background: rgba(139,26,26,.04); color: var(--charcoal);
+    }
+    .check-box {
+      width: 18px; height: 18px; border: 1.5px solid var(--cream-dark);
+      border-radius: 3px; flex-shrink: 0; margin-top: 1px;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .check-item input:checked + .check-label .check-box {
+      background: var(--red); border-color: var(--red);
+    }
+    .check-box-tick {
+      width: 10px; height: 10px; opacity: 0;
+      transition: opacity 0.15s;
+    }
+    .check-item input:checked + .check-label .check-box-tick { opacity: 1; }
+
+    /* ── POLICY BLOCKS ──────────────────────────── */
+    .policy-block {
+      background: var(--white); border: 1px solid var(--cream-dark);
+      border-left: 3px solid var(--red); border-radius: 0 6px 6px 0;
+      padding: 16px 20px; margin-bottom: 16px;
+    }
+    .policy-block p {
+      font-size: 13px; color: var(--warm-gray); font-weight: 300;
+      line-height: 1.7; margin-bottom: 8px;
+    }
+    .policy-block p:last-child { margin-bottom: 0; }
+    .policy-block strong { color: var(--charcoal); font-weight: 600; }
+
+    /* ── SIGNATURE PAD ──────────────────────────── */
+    .sig-wrap {
+      background: var(--white); border: 1.5px solid var(--cream-dark);
+      border-radius: 6px; overflow: hidden;
+    }
+    .sig-header {
+      padding: 10px 16px; background: var(--cream-mid);
+      border-bottom: 1px solid var(--cream-dark);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .sig-header-text {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--warm-gray);
+    }
+    .sig-clear {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--red); background: none;
+      border: none; cursor: pointer; padding: 4px 0; transition: opacity 0.2s;
+    }
+    .sig-clear:hover { opacity: 0.7; }
+    #sigCanvas {
+      display: block; width: 100%; touch-action: none; cursor: crosshair;
+    }
+    .sig-hint {
+      font-size: 12px; color: var(--warm-gray); font-weight: 300;
+      margin-top: 8px; text-align: center; font-style: italic;
+    }
+    .sig-required-msg {
+      font-size: 12px; color: var(--red); margin-top: 6px;
+      display: none;
+    }
+
+    /* ── SUBMIT ─────────────────────────────────── */
+    .submit-section {
+      text-align: center; padding-top: 16px;
+    }
+    .submit-note {
+      font-size: 13px; color: var(--warm-gray); font-weight: 300;
+      margin-bottom: 24px; line-height: 1.6;
+    }
+    .submit-note strong { color: var(--charcoal); }
+    .submit-btn {
+      width: 100%; padding: 20px;
+      background: var(--red); color: var(--white);
+      border: none; border-radius: 6px;
+      font-family: var(--sans); font-size: 14px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      cursor: pointer; transition: background 0.2s, transform 0.15s;
+    }
+    .submit-btn:hover:not(:disabled) { background: var(--red-hover); transform: translateY(-1px); }
+    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    /* ── STATUS ─────────────────────────────────── */
+    .form-status {
+      margin-top: 20px; padding: 16px 20px; border-radius: 6px;
+      font-size: 14px; font-weight: 500; display: none; text-align: left;
+    }
+    .form-status.success {
+      background: rgba(45,106,45,.08); border: 1px solid rgba(45,106,45,.3);
+      color: #2D6A2D; display: block;
+    }
+    .form-status.error {
+      background: rgba(139,26,26,.06); border: 1px solid rgba(139,26,26,.25);
+      color: var(--red); display: block;
+    }
+
+    /* ── CONFIRMATION VIEW ──────────────────────── */
+    #confirmView {
+      display: none; text-align: center;
+      padding: 80px 24px;
+      max-width: var(--max); margin: 0 auto;
+    }
+    .confirm-icon { font-size: 56px; margin-bottom: 24px; }
+    .confirm-title {
+      font-family: var(--serif); font-size: 42px; font-weight: 700;
+      color: var(--charcoal); margin-bottom: 12px;
+    }
+    .confirm-title em { font-style: italic; color: var(--red); }
+    .confirm-body {
+      font-size: 16px; color: var(--warm-gray); font-weight: 300;
+      line-height: 1.8; max-width: 480px; margin: 0 auto 32px;
+    }
+    .confirm-home {
+      display: inline-block; padding: 14px 32px;
+      background: var(--charcoal); color: var(--white);
+      border-radius: 6px; font-family: var(--sans); font-size: 13px;
+      font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .confirm-home:hover { background: var(--red); }
+
+    /* ── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 540px) {
+      .doc-header { padding: 20px; }
+      .doc-header img { height: 40px; }
+      .field-row, .field-row.thirds { grid-template-columns: 1fr; }
+      .section-number { font-size: 40px; }
+      .wrap { padding: 32px 16px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="doc-header">
+  <img src="images/youbetterwalkheader.gif" alt="You Better Walk"/>
+  <div class="doc-header-right">
+    <p class="doc-header-label">You Better Walk LLC</p>
+    <p class="doc-header-title">Service Agreement</p>
+  </div>
+</div>
+
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<!-- FORM VIEW -->
+<div id="formView">
+<div class="wrap">
+
+  <form id="contractForm" novalidate>
+
+    <!-- ── SECTION 1: CLIENT ── -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-number">01</div>
+        <h2 class="section-title">Client <em>Information.</em></h2>
+        <p class="section-intro">The person responsible for this service agreement and for payment of services rendered.</p>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label" for="clientFirst">First Name <span class="req">*</span></label>
+          <input type="text" id="clientFirst" name="clientFirst" autocomplete="given-name" required/>
+        </div>
+        <div class="field">
+          <label class="field-label" for="clientLast">Last Name <span class="req">*</span></label>
+          <input type="text" id="clientLast" name="clientLast" autocomplete="family-name" required/>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label" for="clientEmail">Email Address <span class="req">*</span></label>
+          <input type="email" id="clientEmail" name="clientEmail" autocomplete="email" placeholder="your@email.com" required/>
+        </div>
+        <div class="field">
+          <label class="field-label" for="clientPhone">Phone Number <span class="req">*</span></label>
+          <input type="tel" id="clientPhone" name="clientPhone" autocomplete="tel" placeholder="(614) 000-0000" required/>
+        </div>
+      </div>
+      <div class="field-row full">
+        <div class="field">
+          <label class="field-label" for="clientAddress">Home Address <span class="req">*</span></label>
+          <input type="text" id="clientAddress" name="clientAddress" autocomplete="street-address" placeholder="Street, City, ZIP" required/>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SECTION 2: PET PROFILE ── -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-number">02</div>
+        <h2 class="section-title">Pet <em>Profile.</em></h2>
+        <p class="section-intro">Tell us everything. There is no detail too small. If you have more than one pet, add any additional information in the notes field at the bottom of this section.</p>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label" for="petName">Pet's Name <span class="req">*</span></label>
+          <input type="text" id="petName" name="petName" placeholder="What do they go by?" required/>
+        </div>
+        <div class="field">
+          <label class="field-label" for="petSpecies">Species <span class="req">*</span></label>
+          <select id="petSpecies" name="petSpecies" required>
+            <option value="">Select</option>
+            <option value="Dog">Dog</option>
+            <option value="Cat">Cat</option>
+            <option value="Rabbit">Rabbit</option>
+            <option value="Ferret">Ferret</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-row thirds">
+        <div class="field">
+          <label class="field-label" for="petBreed">Breed / Mix</label>
+          <input type="text" id="petBreed" name="petBreed" placeholder="e.g. Rat Terrier mix"/>
+        </div>
+        <div class="field">
+          <label class="field-label" for="petAge">Age</label>
+          <input type="text" id="petAge" name="petAge" placeholder="e.g. 3 years"/>
+        </div>
+        <div class="field">
+          <label class="field-label" for="petColor">Color / Markings</label>
+          <input type="text" id="petColor" name="petColor" placeholder="e.g. tan and white"/>
+        </div>
+      </div>
+      <div class="field-row full">
+        <div class="field">
+          <label class="field-label" for="petVet">Veterinarian Name &amp; Clinic <span class="req">*</span></label>
+          <input type="text" id="petVet" name="petVet" placeholder="Dr. Name — Clinic Name" required/>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label" for="petVetPhone">Vet Phone Number <span class="req">*</span></label>
+          <input type="tel" id="petVetPhone" name="petVetPhone" placeholder="(614) 000-0000" required/>
+        </div>
+        <div class="field">
+          <label class="field-label" for="petVetAddress">Vet Address</label>
+          <input type="text" id="petVetAddress" name="petVetAddress" placeholder="Street, City"/>
+        </div>
+      </div>
+      <div class="field-row full">
+        <div class="field">
+          <label class="field-label" for="petMedical">Health Conditions, Medications &amp; Allergies</label>
+          <textarea id="petMedical" name="petMedical" placeholder="List any diagnoses, current medications (with dosage and schedule), dietary restrictions, or known allergies. Include anything that affects how we care for them."></textarea>
+        </div>
+      </div>
+      <div class="field-row full">
+        <div class="field">
+          <label class="field-label" for="petBehavior">Behavioral Notes</label>
+          <textarea id="petBehavior" name="petBehavior" placeholder="Known triggers, anxiety, leash reactivity, resource guarding, aggression history, fear responses, quirks we should know. Be candid - this protects everyone."></textarea>
+        </div>
+      </div>
+      <div class="field-row full">
+        <div class="field">
+          <label class="field-label" for="petAdditional">Additional Pets in Household</label>
+          <textarea id="petAdditional" name="petAdditional" placeholder="Name, species, breed, age, and any notes for each additional pet. Include any dynamics between animals we should be aware of."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SECTION 3: EMERGENCY CONTACT ── -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-number">03</div>
+        <h2 class="section-title">Emergency <em>Contact.</em></h2>
+        <p class="section-intro">A person we can reach if we cannot reach you. This should be someone who knows your pet and can make decisions on your behalf.</p>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label" for="emergName">Name <span class="req">*</span></label>
+          <input type="text" id="emergName" name="emergName" required/>
+        </div>
+        <div class="field">
+          <label class="field-label" for="emergRelation">Relationship to Client</label>
+          <input type="text" id="emergRelation" name="emergRelation" placeholder="e.g. spouse, neighbor, parent"/>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label" for="emergPhone">Phone Number <span class="req">*</span></label>
+          <input type="tel" id="emergPhone" name="emergPhone" placeholder="(614) 000-0000" required/>
+        </div>
+        <div class="field">
+          <label class="field-label" for="emergEmail">Email (Optional)</label>
+          <input type="email" id="emergEmail" name="emergEmail" placeholder="their@email.com"/>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SECTION 4: SERVICES & SCHEDULING ── -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-number">04</div>
+        <h2 class="section-title">Services &amp; <em>Schedule.</em></h2>
+        <p class="section-intro">Select all services you are enrolling in. Specific scheduling, rates, and any customizations will be confirmed in writing before services begin.</p>
+      </div>
+
+      <label class="field-label" style="margin-bottom:12px">Services Requested <span class="req">*</span></label>
+      <div class="check-group" id="servicesGroup">
+        <div class="check-item">
+          <input type="checkbox" id="svc1" name="services" value="Dog Walking - 20 min ($22+)"/>
+          <label class="check-label" for="svc1">
+            <span class="check-box"><svg class="check-box-tick" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span><strong>Dog Walking - 20 minutes</strong> - Potty break / quick visit. From $22.</span>
+          </label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="svc2" name="services" value="Dog Walking - 30 min"/>
+          <label class="check-label" for="svc2">
+            <span class="check-box"><svg class="check-box-tick" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span><strong>Dog Walking - 30 minutes</strong> - Standard solo walk. Rate confirmed at onboarding.</span>
+          </label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="svc3" name="services" value="Dog Walking - 45 min"/>
+          <label class="check-label" for="svc3">
+            <span class="check-box"><svg class="check-box-tick" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span><strong>Dog Walking - 45 minutes</strong> - Extended walk for active dogs. Rate confirmed at onboarding.</span>
+          </label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="svc4" name="services" value="Dog Walking - 60 min"/>
+          <label class="check-label" for="svc4">
+            <span class="check-box"><svg class="check-box-tick" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span><strong>Dog Walking - 60 minutes</strong> - Long walk for high-energy breeds or extended enrichment. Rate confirmed at onboarding.</span>
+          </label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="svc5" name="services" value="Pet Sitting - Drop-In Visit"/>
+          <label class="check-label" for="svc5">
+            <span class="check-box"><svg class="check-box-tick" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span><strong>Pet Sitting - Drop-In Visit</strong> - In-home visit (30, 60, or 90 min) for dogs, cats, or other eligible pets. From $25.</span>
+          </label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="svc6" name="services" value="Bespoke Care Arrangement"/>
+          <label class="check-label" for="svc6">
+            <span class="check-box"><svg class="check-box-tick" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span><strong>Bespoke Care</strong> - Custom arrangement for complex households, medical needs, or specialized routines. Rate and scope to be agreed in writing.</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field-row" style="margin-top:20px">
+        <div class="field">
+          <label class="field-label" for="startDate">Anticipated Start Date</label>
+          <input type="date" id="startDate" name="startDate"/>
+        </div>
+        <div class="field">
+          <label class="field-label" for="walkFreq">Approximate Frequency</label>
+          <select id="walkFreq" name="walkFreq">
+            <option value="">Select</option>
+            <option value="Daily (5x/week)">Daily (5x/week)</option>
+            <option value="Every other day">Every other day</option>
+            <option value="2-3x per week">2-3x per week</option>
+            <option value="Once per week">Once per week</option>
+            <option value="As needed / irregular">As needed / irregular</option>
+            <option value="Vacation/travel only">Vacation/travel only</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-row full">
+        <div class="field">
+          <label class="field-label" for="rateNotes">Rate Notes</label>
+          <input type="text" id="rateNotes" name="rateNotes" placeholder="Any rates discussed or confirmed during the meet and greet"/>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SECTION 5: HOME ACCESS ── -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-number">05</div>
+        <h2 class="section-title">Home <em>Access.</em></h2>
+        <p class="section-intro">Access details will be exchanged in person at the meet and greet, never over email. This section confirms the method we have agreed on.</p>
+      </div>
+
+      <label class="field-label" style="margin-bottom:12px">Access Method</label>
+      <div class="check-group">
+        <div class="check-item">
+          <input type="checkbox" id="acc1" name="accessMethod" value="Physical key provided"/>
+          <label class="check-label" for="acc1">
+            <span class="check-box"><svg class="check-box-tick" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Physical key provided at meet and greet
+          </label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="acc2" name="accessMethod" value="Keypad / door code"/>
+          <label class="check-label" for="acc2">
+            <span class="check-box"><svg class="check-box-tick" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Keypad / door code (shared verbally at meet and greet)
+          </label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="acc3" name="accessMethod" value="Lockbox on property"/>
+          <label class="check-label" for="acc3">
+            <span class="check-box"><svg class="check-box-tick" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Lockbox on property (code shared at meet and greet)
+          </label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="acc4" name="accessMethod" value="Garage code"/>
+          <label class="check-label" for="acc4">
+            <span class="check-box"><svg class="check-box-tick" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Garage code
+          </label>
+        </div>
+      </div>
+      <div class="field-row full" style="margin-top:12px">
+        <div class="field">
+          <label class="field-label" for="accessNotes">Additional Access Notes</label>
+          <textarea id="accessNotes" name="accessNotes" placeholder="Gate codes, alarm instructions, which door to use, parking, HOA requirements, etc. Do not include codes here - those are handled in person."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SECTION 6: POLICIES ── -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-number">06</div>
+        <h2 class="section-title">Policies &amp; <em>Terms.</em></h2>
+        <p class="section-intro">Please read each section carefully. By signing below, you confirm that you have read and understood each item.</p>
+      </div>
+
+      <div class="policy-block">
+        <p><strong>One Dog Per Walk.</strong> All dog walking services are conducted as private, one-on-one sessions. In multi-dog households, each dog walks individually. This is a standing policy and is not subject to exception.</p>
+      </div>
+
+      <div class="policy-block">
+        <p><strong>Cancellation.</strong> We ask for at least 48 hours' notice for any cancellation or schedule change. Cancellations with less than 48 hours' notice may be charged 50% of the scheduled visit. Cancellations with less than 24 hours' notice, same-day cancellations, and no-shows are charged 100% of the scheduled visit. Holiday visit cancellations are charged at 100% regardless of notice given.</p>
+      </div>
+
+      <div class="policy-block">
+        <p><strong>Pet Health Disclosure.</strong> You represent that you have disclosed all known health conditions, behavioral history, medications, allergies, and any history of aggression or unpredictable behavior. You Better Walk LLC is not liable for incidents arising from undisclosed health or behavioral conditions.</p>
+      </div>
+
+      <div class="policy-block">
+        <p><strong>Emergency Veterinary Authorization.</strong> You authorize You Better Walk LLC to seek emergency veterinary care for your pet if you and your emergency contact cannot be reached and we believe immediate care is necessary. You agree to reimburse all reasonable veterinary expenses incurred on your behalf. We will contact your designated emergency veterinarian unless instructed otherwise.</p>
+      </div>
+
+      <div class="policy-block">
+        <p><strong>Liability.</strong> You are fully responsible for the behavior of your pet. If your pet bites, injures, or causes damage to a person or property during a service visit, you agree to be solely responsible for all resulting costs and claims. You Better Walk LLC carries general liability insurance and animal bailee coverage appropriate for these services. Our liability for any claim shall not exceed the amount paid for the specific service visit in question.</p>
+      </div>
+
+      <div class="policy-block">
+        <p><strong>Home Access &amp; Keys.</strong> Any keys, codes, or access credentials provided are stored securely and used solely for service delivery. They are never shared with unauthorized parties. Upon termination of services, you may request the return or destruction of any physical keys within 7 days.</p>
+      </div>
+
+      <div class="policy-block">
+        <p><strong>Termination.</strong> Either party may terminate this agreement at any time. You Better Walk LLC reserves the right to immediately discontinue services if false information has been provided, a pet presents an undisclosed danger, or a client engages in abusive or harassing conduct.</p>
+      </div>
+
+      <div class="policy-block">
+        <p><strong>Holiday &amp; Peak Season Rates.</strong> Services provided during the full week surrounding major holidays (New Year's, Easter, Memorial Day, July 4th, Labor Day, Thanksgiving, Christmas) are subject to a holiday surcharge communicated in advance. Peak season rates (Memorial Day through Labor Day) may apply to new service arrangements. You will always be notified before any rate adjustment takes effect.</p>
+      </div>
+
+      <label class="field-label" style="margin-bottom:12px;margin-top:24px">Policy Acknowledgment <span class="req">*</span></label>
+      <div class="check-group">
+        <div class="check-item">
+          <input type="checkbox" id="policyAck" name="policyAck" required/>
+          <label class="check-label" for="policyAck">
+            <span class="check-box"><svg class="check-box-tick" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            I have read and understood all policies above. I agree to these terms on behalf of myself and all pets listed in this agreement.
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SECTION 7: PHOTO CONSENT ── -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-number">07</div>
+        <h2 class="section-title">Photo &amp; Media <em>Consent.</em></h2>
+        <p class="section-intro">We photograph and send a photo report card after every visit. The questions below are about what we do with those photos beyond that.</p>
+      </div>
+
+      <label class="field-label" style="margin-bottom:12px">Please select your preference <span class="req">*</span></label>
+      <div class="check-group">
+        <div class="check-item">
+          <input type="radio" name="photoConsent" id="photoYes" value="Consents to social media use of pet photos"/>
+          <label class="check-label" for="photoYes">
+            <span class="check-box"><svg class="check-box-tick" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            You have my permission to share photos of my pet on social media and other public platforms.
+          </label>
+        </div>
+        <div class="check-item">
+          <input type="radio" name="photoConsent" id="photoNo" value="Does not consent to social media use of pet photos - private only"/>
+          <label class="check-label" for="photoNo">
+            <span class="check-box"><svg class="check-box-tick" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Please keep all photos of my pet private - for my eyes only, not posted publicly anywhere.
+          </label>
+        </div>
+      </div>
+      <p style="font-size:13px;color:var(--warm-gray);font-weight:300;margin-top:10px;line-height:1.6;">You may change this preference at any time by contacting us directly. We will always honor your request immediately.</p>
+    </div>
+
+    <!-- ── SECTION 8: SIGNATURE ── -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-number">08</div>
+        <h2 class="section-title">Signature &amp; <em>Agreement.</em></h2>
+        <p class="section-intro">By signing below, you confirm that all information provided in this agreement is accurate and complete, and that you agree to the terms of service outlined in Section 6. A signed copy will be sent to your email address and to You Better Walk LLC immediately on submission.</p>
+      </div>
+
+      <div class="field-row" style="margin-bottom:20px">
+        <div class="field">
+          <label class="field-label" for="sigName">Full Name (printed) <span class="req">*</span></label>
+          <input type="text" id="sigName" name="sigName" autocomplete="name" required/>
+        </div>
+        <div class="field">
+          <label class="field-label" for="sigDate">Date <span class="req">*</span></label>
+          <input type="date" id="sigDate" name="sigDate" required/>
+        </div>
+      </div>
+
+      <label class="field-label" style="margin-bottom:10px">Signature <span class="req">*</span></label>
+      <div class="sig-wrap">
+        <div class="sig-header">
+          <span class="sig-header-text">Draw your signature</span>
+          <button type="button" class="sig-clear" id="sigClear">Clear</button>
+        </div>
+        <canvas id="sigCanvas" height="160"></canvas>
+      </div>
+      <p class="sig-hint">Use your finger or mouse to sign above.</p>
+      <p class="sig-required-msg" id="sigRequired">A signature is required to complete this agreement.</p>
+
+      <div style="margin-top:24px">
+        <div class="check-item">
+          <input type="checkbox" id="finalAck" name="finalAck" required/>
+          <label class="check-label" for="finalAck">
+            <span class="check-box"><svg class="check-box-tick" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            I understand this is an electronic agreement. My signature above represents my informed consent and my commitment to the terms and policies of You Better Walk LLC.
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SUBMIT ── -->
+    <div class="submit-section">
+      <p class="submit-note">By clicking Submit, this agreement and a signed copy will be sent to <strong id="emailPreview">your email address</strong> and to You Better Walk LLC for your records. No keys or services begin until after your meet and greet.</p>
+      <button type="submit" class="submit-btn" id="submitBtn">Submit Agreement &rarr;</button>
+      <div class="form-status" id="formStatus"></div>
+    </div>
+
+  </form>
+</div>
+</div>
+
+<!-- CONFIRMATION VIEW -->
+<div id="confirmView">
+  <div class="confirm-icon">🐾</div>
+  <h2 class="confirm-title">You're all <em>set.</em></h2>
+  <p class="confirm-body">Your signed agreement has been sent to your email and to us. We'll be in touch to confirm your meet and greet. Nothing starts until we've met in person.</p>
+  <a href="index.html" class="confirm-home">Back to Home</a>
+</div>
+
+<!--
+  EmailJS SDK — loaded from CDN
+  Docs: https://www.emailjs.com/docs/
+-->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+  // ─────────────────────────────────────────────────
+  // CONFIGURATION — Replace these with your own values
+  // from your EmailJS account (emailjs.com)
+  // ─────────────────────────────────────────────────
+  const EMAILJS_PUBLIC_KEY       = 'LyI9ScohmOruWAzOo';
+  const EMAILJS_SERVICE_ID       = 'service_q1sekpj';
+  const EMAILJS_OWNER_TEMPLATE   = 'template_yugjbbq';   // Full details to Brent
+  const EMAILJS_CLIENT_TEMPLATE  = 'template_1xvqtxc';  // Confirmation to client
+
+  const OWNER_EMAIL = 'youbetterwalkllc@gmail.com';
+  // ─────────────────────────────────────────────────
+
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+  // ── PROGRESS BAR ──────────────────────────────────
+  const fill = document.getElementById('progressFill');
+  function updateProgress() {
+    const form = document.getElementById('contractForm');
+    const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
+    let filled = 0;
+    inputs.forEach(el => {
+      if (el.type === 'checkbox' || el.type === 'radio') {
+        if (el.checked) filled++;
+      } else if (el.value.trim()) {
+        filled++;
+      }
+    });
+    const hasSig = !sigCanvas.isEmpty();
+    const pct = Math.round(((filled + (hasSig ? 1 : 0)) / (inputs.length + 1)) * 100);
+    fill.style.width = Math.min(pct, 100) + '%';
+  }
+  document.getElementById('contractForm').addEventListener('input', updateProgress);
+  document.getElementById('contractForm').addEventListener('change', updateProgress);
+
+  // Email preview
+  document.getElementById('clientEmail').addEventListener('input', function() {
+    const preview = document.getElementById('emailPreview');
+    preview.textContent = this.value.trim() || 'your email address';
+  });
+
+  // ── SIGNATURE PAD ──────────────────────────────────
+  const sigCanvas = (function() {
+    const canvas = document.getElementById('sigCanvas');
+    const ctx = canvas.getContext('2d');
+    let drawing = false;
+    let hasDrawn = false;
+
+    function resize() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const ratio = window.devicePixelRatio || 1;
+      canvas.width = rect.width * ratio;
+      canvas.height = 160 * ratio;
+      canvas.style.width = rect.width + 'px';
+      canvas.style.height = '160px';
+      ctx.scale(ratio, ratio);
+      ctx.strokeStyle = '#261A1A';
+      ctx.lineWidth = 2;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    function getPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      const src = e.touches ? e.touches[0] : e;
+      return {
+        x: src.clientX - rect.left,
+        y: src.clientY - rect.top
+      };
+    }
+
+    function start(e) {
+      e.preventDefault();
+      drawing = true;
+      const p = getPos(e);
+      ctx.beginPath();
+      ctx.moveTo(p.x, p.y);
+    }
+    function move(e) {
+      e.preventDefault();
+      if (!drawing) return;
+      const p = getPos(e);
+      ctx.lineTo(p.x, p.y);
+      ctx.stroke();
+      hasDrawn = true;
+    }
+    function end() { drawing = false; updateProgress(); }
+
+    canvas.addEventListener('mousedown', start);
+    canvas.addEventListener('mousemove', move);
+    canvas.addEventListener('mouseup', end);
+    canvas.addEventListener('mouseleave', end);
+    canvas.addEventListener('touchstart', start, { passive: false });
+    canvas.addEventListener('touchmove', move, { passive: false });
+    canvas.addEventListener('touchend', end);
+
+    return {
+      isEmpty: () => !hasDrawn,
+      toDataURL: () => canvas.toDataURL('image/png'),
+      clear: () => {
+        ctx.clearRect(0, 0, canvas.width / (window.devicePixelRatio || 1), canvas.height / (window.devicePixelRatio || 1));
+        hasDrawn = false;
+        updateProgress();
+      }
+    };
+  })();
+
+  document.getElementById('sigClear').addEventListener('click', () => sigCanvas.clear());
+
+  // ── DATE DEFAULT ───────────────────────────────────
+  document.getElementById('sigDate').value = new Date().toISOString().split('T')[0];
+
+  // ── COLLECT FORM DATA ──────────────────────────────
+  function collectData() {
+    const f = id => document.getElementById(id)?.value.trim() || '';
+    const checkedValues = name => [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(el => el.value).join(', ');
+    const radioValue = name => document.querySelector(`input[name="${name}"]:checked`)?.value || 'Not specified';
+
+    return {
+      client_name:     f('clientFirst') + ' ' + f('clientLast'),
+      client_email:    f('clientEmail'),
+      client_phone:    f('clientPhone'),
+      client_address:  f('clientAddress'),
+      pet_name:        f('petName'),
+      pet_species:     f('petSpecies'),
+      pet_breed:       f('petBreed'),
+      pet_age:         f('petAge'),
+      pet_color:       f('petColor'),
+      pet_vet:         f('petVet'),
+      pet_vet_phone:   f('petVetPhone'),
+      pet_vet_address: f('petVetAddress'),
+      pet_medical:     f('petMedical') || 'None reported',
+      pet_behavior:    f('petBehavior') || 'None reported',
+      pet_additional:  f('petAdditional') || 'None',
+      emerg_name:      f('emergName'),
+      emerg_relation:  f('emergRelation'),
+      emerg_phone:     f('emergPhone'),
+      emerg_email:     f('emergEmail'),
+      services:        checkedValues('services') || 'Not specified',
+      walk_frequency:  f('walkFreq'),
+      start_date:      f('startDate'),
+      rate_notes:      f('rateNotes') || 'To be confirmed',
+      access_method:   checkedValues('accessMethod') || 'To be arranged',
+      access_notes:    f('accessNotes'),
+      photo_consent:   radioValue('photoConsent'),
+      sig_name:        f('sigName'),
+      sig_date:        f('sigDate'),
+      signature_data:  sigCanvas.toDataURL(),
+      timestamp:       new Date().toLocaleString('en-US', { timeZone: 'America/New_York', dateStyle: 'full', timeStyle: 'short' }) + ' ET',
+      owner_email:     OWNER_EMAIL,
+    };
+  }
+
+  // ── FORM SUBMIT ────────────────────────────────────
+  document.getElementById('contractForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const status = document.getElementById('formStatus');
+    const btn    = document.getElementById('submitBtn');
+    const sigReq = document.getElementById('sigRequired');
+
+    // Validate signature
+    if (sigCanvas.isEmpty()) {
+      sigReq.style.display = 'block';
+      sigReq.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    sigReq.style.display = 'none';
+
+    // Validate required checkboxes
+    const policyAck = document.getElementById('policyAck');
+    const finalAck  = document.getElementById('finalAck');
+    const photoConsent = document.querySelector('input[name="photoConsent"]:checked');
+
+    if (!policyAck.checked) {
+      policyAck.closest('.check-item').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    if (!photoConsent) {
+      document.getElementById('photoYes').closest('.check-group').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    if (!finalAck.checked) {
+      finalAck.closest('.check-item').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    status.className = 'form-status';
+    status.style.display = 'none';
+
+    const data = collectData();
+
+    try {
+      // Send to owner (full details)
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_OWNER_TEMPLATE, data);
+
+      // Send confirmation to client
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_CLIENT_TEMPLATE, data);
+
+      // Show confirmation screen
+      document.getElementById('formView').style.display = 'none';
+      document.getElementById('confirmView').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    } catch (err) {
+      console.error('EmailJS error:', err);
+      status.className = 'form-status error';
+      status.textContent = 'Something went wrong sending your agreement. Please email youbetterwalkllc@gmail.com directly and we\'ll sort it out.';
+      status.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Submit Agreement \u2192';
+    }
+  });
+</script>
+
+</body>
+</html>

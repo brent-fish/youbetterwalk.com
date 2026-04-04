@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pricing Reference — You Better Walk (Internal)</title>
+  <meta name="robots" content="noindex"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #FAF6F0; --cream-mid: #F0E8DC; --cream-dark: #DFD1BE;
+      --red: #8B1A1A; --charcoal: #261A1A; --warm-gray: #5C5050; --white: #FFFFFF;
+      --green: #2D6A2D; --amber: #7A5200;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Jost', sans-serif;
+    }
+    body { background: var(--cream); color: var(--charcoal); font-family: var(--sans); font-size: 15px; line-height: 1.7; }
+
+    .page-header {
+      background: var(--charcoal); padding: 32px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .page-header img { height: 52px; width: auto; }
+    .page-header-label {
+      font-family: var(--sans); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(255,255,255,.45);
+    }
+    .internal-badge {
+      background: var(--red); color: var(--white);
+      font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; padding: 4px 12px; border-radius: 100px;
+    }
+
+    .wrap { max-width: 960px; margin: 0 auto; padding: 48px 32px 80px; }
+
+    h1 { font-family: var(--serif); font-size: 48px; font-weight: 700; color: var(--charcoal); margin-bottom: 8px; }
+    h1 em { font-style: italic; color: var(--red); }
+    .page-sub { font-size: 14px; color: var(--warm-gray); font-weight: 300; margin-bottom: 48px; }
+
+    .section { margin-bottom: 48px; }
+    .section-title {
+      font-family: var(--sans); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.28em; text-transform: uppercase; color: var(--red);
+      margin-bottom: 16px; padding-bottom: 10px;
+      border-bottom: 1.5px solid var(--cream-dark);
+    }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: 8px; overflow: hidden; border: 1px solid var(--cream-dark); }
+    thead { background: var(--charcoal); }
+    thead th { padding: 14px 18px; text-align: left; font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,.6); }
+    tbody tr { border-bottom: 1px solid var(--cream-mid); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--cream); }
+    td { padding: 14px 18px; font-size: 14px; color: var(--charcoal); }
+    td.price { font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--charcoal); }
+    td.price span { font-family: var(--sans); font-size: 12px; color: var(--warm-gray); font-weight: 400; display: block; }
+    td.note { font-size: 13px; color: var(--warm-gray); font-weight: 300; }
+    .tag { display: inline-block; padding: 2px 10px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; }
+    .tag-base { background: var(--cream-mid); color: var(--charcoal); border: 1px solid var(--cream-dark); }
+    .tag-suggest { background: rgba(45,106,45,.1); color: var(--green); border: 1px solid rgba(45,106,45,.25); }
+    .tag-max { background: rgba(122,82,0,.1); color: var(--amber); border: 1px solid rgba(122,82,0,.25); }
+
+    /* Rule cards */
+    .rule-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .rule-card { background: var(--white); border: 1px solid var(--cream-dark); border-radius: 8px; padding: 20px 24px; }
+    .rule-card-label { font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+    .rule-card-value { font-family: var(--serif); font-size: 28px; font-weight: 700; color: var(--charcoal); line-height: 1; margin-bottom: 6px; }
+    .rule-card-note { font-size: 13px; color: var(--warm-gray); font-weight: 300; line-height: 1.5; }
+
+    /* Notes */
+    .note-block { background: var(--white); border: 1px solid var(--cream-dark); border-left: 3px solid var(--red); border-radius: 0 8px 8px 0; padding: 16px 20px; margin-top: 12px; }
+    .note-block p { font-size: 13px; color: var(--warm-gray); font-weight: 300; line-height: 1.6; margin-bottom: 8px; }
+    .note-block p:last-child { margin-bottom: 0; }
+    .note-block strong { color: var(--charcoal); font-weight: 600; }
+
+    .market-note { background: rgba(45,106,45,.06); border: 1px solid rgba(45,106,45,.2); border-radius: 8px; padding: 16px 20px; margin-top: 16px; font-size: 13px; color: var(--charcoal); line-height: 1.6; }
+    .market-note strong { color: var(--green); }
+
+    .key { display: flex; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+    .key-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--warm-gray); }
+
+    @media (max-width: 600px) {
+      .rule-grid { grid-template-columns: 1fr; }
+      .page-header { padding: 20px 24px; }
+      .wrap { padding: 32px 20px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <img src="images/youbetterwalkheader.gif" alt="You Better Walk"/>
+  <div style="text-align:right">
+    <p class="page-header-label">Internal Use Only</p>
+    <span class="internal-badge">Pricing Reference</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <h1>Pricing <em>Reference.</em></h1>
+  <p class="page-sub">Rate benchmarks, rules, and guidance. Based on Columbus/Upper Arlington market data, 2026. Review annually or when onboarding new clients.</p>
+
+  <div class="key">
+    <div class="key-item"><span class="tag tag-base">Base</span> Your current posted rate</div>
+    <div class="key-item"><span class="tag tag-suggest">Suggested</span> Market midpoint - consider moving here as reputation builds</div>
+    <div class="key-item"><span class="tag tag-max">Ceiling</span> High end for premium solo operators in your market</div>
+  </div>
+
+  <!-- DOG WALKING -->
+  <div class="section">
+    <p class="section-title">Dog Walking</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Session</th>
+          <th>Your Rate</th>
+          <th>Market Midpoint</th>
+          <th>Market Ceiling</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>20 minutes</strong></td>
+          <td class="price">$22<span>posted minimum</span></td>
+          <td><span class="tag tag-suggest">$24</span></td>
+          <td><span class="tag tag-max">$28</span></td>
+          <td class="note">Bathroom break / potty walk. Rarely used as a primary service by experienced operators - consider positioning as add-on only.</td>
+        </tr>
+        <tr>
+          <td><strong>30 minutes</strong></td>
+          <td class="price">$30<span>suggested base rate</span></td>
+          <td><span class="tag tag-suggest">$32</span></td>
+          <td><span class="tag tag-max">$38</span></td>
+          <td class="note">Most common booking unit. Your core revenue driver. Price confidently here.</td>
+        </tr>
+        <tr>
+          <td><strong>45 minutes</strong></td>
+          <td class="price">$36<span>launch rate - slightly under market</span></td>
+          <td><span class="tag tag-suggest">$38</span></td>
+          <td><span class="tag tag-max">$44</span></td>
+          <td class="note">Fills the 30-60 gap cleanly. Strong value perception for clients with active dogs who don't need a full hour. Price slightly under the market midpoint at launch to build volume, then raise to $38 once established.</td>
+        </tr>
+        <tr>
+          <td><strong>60 minutes</strong></td>
+          <td class="price">$48<span>suggested base rate</span></td>
+          <td><span class="tag tag-suggest">$52</span></td>
+          <td><span class="tag tag-max">$60</span></td>
+          <td class="note">High-value clients, high-energy breeds. Not simply 2x the 30-min - your time cost is higher (travel, effort). Price accordingly.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note-block">
+      <p><strong>Multi-dog household (same client):</strong> Offer 10-15% off the second consecutive walk in the same visit window. This rewards loyalty, keeps you competitive, and doesn't undercut your base.</p>
+      <p><strong>Distance surcharge:</strong> Anything beyond approximately 5 miles from Upper Arlington center - add $3-5 per visit. Be consistent; build it into the onboarding conversation, not retroactively.</p>
+    </div>
+  </div>
+
+  <!-- PET SITTING -->
+  <div class="section">
+    <p class="section-title">Pet Sitting - Drop-In Visits</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Session</th>
+          <th>Your Rate</th>
+          <th>Market Midpoint</th>
+          <th>Market Ceiling</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>30 minutes</strong></td>
+          <td class="price">$28<span>suggested base rate</span></td>
+          <td><span class="tag tag-suggest">$30</span></td>
+          <td><span class="tag tag-max">$35</span></td>
+          <td class="note">Quick check-in: feed, water, litter, a few minutes of attention. Cats primarily; occasionally used for dogs between walks.</td>
+        </tr>
+        <tr>
+          <td><strong>60 minutes</strong></td>
+          <td class="price">$38<span>suggested base rate</span></td>
+          <td><span class="tag tag-suggest">$42</span></td>
+          <td><span class="tag tag-max">$50</span></td>
+          <td class="note">Full visit. Enough time to settle in, address all care needs, and give real attention. Most common sit booking.</td>
+        </tr>
+        <tr>
+          <td><strong>90 minutes</strong></td>
+          <td class="price">$52<span>suggested base rate</span></td>
+          <td><span class="tag tag-suggest">$58</span></td>
+          <td><span class="tag tag-max">$68</span></td>
+          <td class="note">Multi-pet households or dogs who need a walk included. A meaningful time investment - price it like one.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note-block">
+      <p><strong>Multi-pet sit surcharge:</strong> For households with 3 or more animals requiring individual attention (separate feeding, medications, etc.), add $5-8 per visit. Discuss this transparently at onboarding.</p>
+      <p><strong>Medication administration:</strong> If you're giving oral meds, eye drops, insulin, or similar - add $3-5 per visit minimum. Your time, your liability exposure, your rate.</p>
+      <p><strong>Complimentary house tasks (included, no charge):</strong> Mail and package collection, rotating blinds, watering up to 5 indoor plants. These are included in all sitting visits as standard practice. Do not itemize or upsell - the value is in the client feeling taken care of holistically, not in adding line items.</p>
+    </div>
+  </div>
+
+  <!-- BESPOKE CARE -->
+  <div class="section">
+    <p class="section-title">Bespoke Care</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Arrangement Type</th>
+          <th>Suggested Pricing Approach</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Extended daily care block</strong><br><span style="font-size:12px;color:var(--warm-gray)">2-4 hours</span></td>
+          <td class="price" style="font-size:16px">$75-120<span>per block, negotiated</span></td>
+          <td class="note">Households that need midday presence. Price as a day rate fraction, not as stacked 30-min units.</td>
+        </tr>
+        <tr>
+          <td><strong>Weekly retainer</strong><br><span style="font-size:12px;color:var(--warm-gray)">Fixed schedule, recurring</span></td>
+          <td class="price" style="font-size:16px">5-10% off<span>vs. per-visit rates</span></td>
+          <td class="note">Reward commitment with a modest discount. Guarantees your schedule and their service. Get it in writing.</td>
+        </tr>
+        <tr>
+          <td><strong>Overnight / house sit</strong><br><span style="font-size:12px;color:var(--warm-gray)">If offered in future</span></td>
+          <td class="price" style="font-size:16px">$85-120<span>per night, Columbus market</span></td>
+          <td class="note">Not currently offered. Add commercial auto before offering transport. Revisit when client base is established.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- HOLIDAY AND PEAK -->
+  <div class="section">
+    <p class="section-title">Holiday & Peak Season Pricing</p>
+    <div class="rule-grid">
+      <div class="rule-card">
+        <p class="rule-card-label">Standard Holiday Uplift</p>
+        <p class="rule-card-value">+25-50%</p>
+        <p class="rule-card-note">Apply to all services during the full week surrounding major holidays: Thanksgiving week, Christmas/NYE week, July 4th week, Memorial Day weekend, Labor Day weekend. The holiday itself is never an isolated day for scheduling purposes. Communicate before the season, not the week of.</p>
+      </div>
+      <div class="rule-card">
+        <p class="rule-card-label">Peak Season Window</p>
+        <p class="rule-card-value">Summer + Holidays</p>
+        <p class="rule-card-note">Memorial Day through Labor Day is high-demand for pet care. Consider a modest +10-15% seasonal rate for new clients during this window.</p>
+      </div>
+      <div class="rule-card">
+        <p class="rule-card-label">Recommended Holiday Structure</p>
+        <p class="rule-card-value">Flat +$15/visit</p>
+        <p class="rule-card-note">A flat fee per visit is simpler for clients than a percentage - they know the number before they book. +$15/visit for drop-ins and walks; +$25-30 for overnights (when offered). State it clearly in onboarding and the FAQ.</p>
+      </div>
+      <div class="rule-card">
+        <p class="rule-card-label">Holiday Booking Cutoff</p>
+        <p class="rule-card-value">2 weeks out</p>
+        <p class="rule-card-note">Set a booking cutoff for peak holidays. Late bookings carry a +$10-15 convenience fee. Incentivizes planning, protects your schedule.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CANCELLATION FEES -->
+  <div class="section">
+    <p class="section-title">Cancellation Policy</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Notice Given</th>
+          <th>Fee</th>
+          <th>Rationale</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>48+ hours</strong></td>
+          <td class="price" style="font-size:18px;color:var(--green)">No charge</td>
+          <td class="note">Standard window. No impact on your schedule.</td>
+        </tr>
+        <tr>
+          <td><strong>24-48 hours</strong></td>
+          <td class="price" style="font-size:18px">50% of visit</td>
+          <td class="note">Partial compensation for blocked schedule time. Apply consistently; exceptions should be rare and documented.</td>
+        </tr>
+        <tr>
+          <td><strong>Under 24 hours</strong></td>
+          <td class="price" style="font-size:18px">100% of visit</td>
+          <td class="note">Full fee. At this point the slot is unrecoverable. Non-negotiable except in genuine emergencies.</td>
+        </tr>
+        <tr>
+          <td><strong>Same-day / no-show</strong></td>
+          <td class="price" style="font-size:18px">100% of visit</td>
+          <td class="note">Full fee. You showed up. Consider a second no-show grounds for service review.</td>
+        </tr>
+        <tr>
+          <td><strong>Holiday cancellation</strong></td>
+          <td class="price" style="font-size:18px">100% of visit</td>
+          <td class="note">Regardless of notice. Holiday slots are finite and in demand. State this clearly in advance.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PAYMENT -->
+  <div class="section">
+    <p class="section-title">Payment & Billing</p>
+    <div class="rule-grid">
+      <div class="rule-card">
+        <p class="rule-card-label">Accepted Methods</p>
+        <p class="rule-card-value" style="font-size:18px;line-height:1.4">Venmo, Zelle, Square</p>
+        <p class="rule-card-note">Venmo Business (zero fee, ubiquitous) and Zelle (zero fee, instant via your bank) are your primary options. Square handles card payments at 2.6% - clients who prefer card pay via Square. Three options is professional without being complicated. Skip PayPal.</p>
+      </div>
+      <div class="rule-card">
+        <p class="rule-card-label">Billing Cycle</p>
+        <p class="rule-card-value" style="font-size:18px;line-height:1.4">Weekly or per-visit</p>
+        <p class="rule-card-note">For recurring clients, weekly billing reduces friction for both sides. For new or occasional clients, per-visit until trust is established. Never let invoices age past 14 days.</p>
+      </div>
+      <div class="rule-card">
+        <p class="rule-card-label">Late Payment</p>
+        <p class="rule-card-value">Pause service at 7 days</p>
+        <p class="rule-card-note">A soft pause (not a termination) with a direct message is professional and usually resolves it immediately. Document it in your client notes.</p>
+      </div>
+      <div class="rule-card">
+        <p class="rule-card-label">Rate Increases</p>
+        <p class="rule-card-value">30 days notice</p>
+        <p class="rule-card-note">Industry standard is 30 days written notice for any rate change. Annual increases of 5-10% are normal and expected. Clients who've been with you longest deserve personal messaging, not a blanket email.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARKET CONTEXT -->
+  <div class="section">
+    <p class="section-title">Market Context - Columbus, OH 2026</p>
+    <div class="note-block">
+      <p><strong>Solo independent operators</strong> in the Columbus metro typically run 10-20% above app-based platforms (Rover/Wag equivalents) on a net basis, once platform fees are factored out. Your positioning as a non-app, personal service justifies a premium. Don't undercut to compete with platforms - that's not your market.</p>
+      <p><strong>Upper Arlington / Grandview Heights / Marble Cliff / Worthington / Clintonville</strong> are among the higher-income neighborhoods in the Columbus metro. These clients are accustomed to paying for quality and personalization. Price for that market, not the metro average.</p>
+      <p><strong>Free meet and greet as differentiator:</strong> Several Columbus competitors (including Fur Star Pet Care) charge $25-35 for the initial meet and greet. Yours is free. This removes friction at the top of the funnel and is a genuine competitive advantage worth stating clearly in copy and every first-contact email. Do not add a fee until you have a waitlist.</p>
+      <p><strong>Price anchoring:</strong> Your "From $22" and "From $25" language on the site is intentionally low - it gets people in the door. The actual conversation at onboarding sets the real rate. Make sure your language there moves people toward the 30-min walk ($30) as the standard, with 20-min as the exception.</p>
+      <p><strong>Review pricing annually</strong> - at minimum at the start of each calendar year, and whenever Columbus CPI data shows meaningful inflation. Your labor rate should not stay flat while your cost of living rises.</p>
+    </div>
+    <div class="market-note">
+      <strong>Bottom line:</strong> At full capacity for a solo operator (8-10 walks/day, 5 days/week), your gross revenue potential at current rates is approximately $48,000-$65,000 annually before expenses. At suggested market midpoints, that range rises to $55,000-$75,000. The investment in reputation and relationships now directly compounds that number.
+    </div>
+  </div>
+
+  <p style="font-size:12px;color:var(--warm-gray);margin-top:32px;padding-top:24px;border-top:1px solid var(--cream-dark);">Internal document. Do not share with clients. You Better Walk LLC &nbsp;&bull;&nbsp; Updated March 2026.</p>
+</div>
+
+</body>
+</html>
