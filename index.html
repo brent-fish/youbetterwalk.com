@@ -4,7 +4,8 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>You Better Walk | Dog Walking &amp; Pet Sitting | Upper Arlington, Columbus, Ohio</title>
-  <meta name="description" content="Private, one-on-one dog walking and in-home pet sitting in Upper Arlington, Grandview Heights, Marble Cliff, Worthington, and Clintonville. No apps, no pack walks. Just reliable, personal care for your dog or cat."/>
+  <meta name="description" content="Private, one-on-one dog walking and in-home pet sitting in Upper Arlington, Grandview Heights, and Marble Cliff. No apps, no pack walks. Just reliable, personal care for your dog or cat."/>
+  <meta name="theme-color" content="#FAF6F0"/>
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://youbetterwalk.com/"/>
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico"/>
@@ -14,15 +15,15 @@
   <link rel="manifest" href="/images/site.webmanifest"/>
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="You Better Walk | Dog Walking &amp; Pet Sitting | Columbus, Ohio"/>
-  <meta property="og:description" content="Private dog walking and in-home pet sitting in Upper Arlington, Grandview Heights, Marble Cliff, Worthington, and Clintonville. One dog. One walk. Every time."/>
+  <meta property="og:description" content="Private dog walking and in-home pet sitting in Upper Arlington, Grandview Heights, and Marble Cliff. One dog. One walk. Every time."/>
   <meta property="og:url" content="https://youbetterwalk.com/"/>
   <meta property="og:site_name" content="You Better Walk"/>
   <meta property="og:image" content="https://youbetterwalk.com/images/og-share.png"/>
-  <meta property="og:image:width" content="1200"/>
-  <meta property="og:image:height" content="630"/>
+  <meta property="og:image:width" content="1600"/>
+  <meta property="og:image:height" content="900"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="You Better Walk | Dog Walking &amp; Pet Sitting | Columbus, Ohio"/>
-  <meta name="twitter:description" content="Private dog walking and in-home pet sitting in Upper Arlington, Grandview Heights, Marble Cliff, Worthington, and Clintonville. One dog. One walk. Every time."/>
+  <meta name="twitter:description" content="Private dog walking and in-home pet sitting in Upper Arlington, Grandview Heights, and Marble Cliff. One dog. One walk. Every time."/>
   <meta name="twitter:image" content="https://youbetterwalk.com/images/og-share.png"/>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6L1L4PWZ5"></script>
@@ -49,7 +50,7 @@
       "addressCountry": "US"
     },
     "areaServed": [
-      "Upper Arlington", "Grandview Heights", "Marble Cliff", "Worthington", "Clintonville"
+      "Upper Arlington", "Grandview Heights", "Marble Cliff"
     ],
     "priceRange": "$$",
     "sameAs": ["https://www.instagram.com/ubetterwalk"],
@@ -82,6 +83,7 @@
     body{background:var(--cream);color:var(--charcoal);font-family:var(--sans);font-size:18px;line-height:1.78;overflow-x:hidden}
     img{max-width:100%;display:block}
     a{color:inherit;text-decoration:none}
+    a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--red);outline-offset:3px}
 
     /* ── NAV ─────────────────────────────────────── */
     .nav{
@@ -210,10 +212,6 @@
       display:flex;align-items:center;justify-content:center;
       position:relative;overflow:hidden;
     }
-    .hero-photo-frame::before{display:none}
-    .hero-photo-placeholder{position:relative;z-index:1;text-align:center;padding:32px}
-    .hero-photo-placeholder strong{display:block;font-family:var(--serif);font-size:22px;font-weight:700;color:var(--red);margin-bottom:6px}
-    .hero-photo-placeholder p{font-family:var(--sans);font-size:13px;font-weight:400;letter-spacing:0.08em;color:var(--warm-gray)}
     .hero-photo-badge{
       position:absolute;bottom:24px;right:24px;
       background:var(--red);color:var(--white);
@@ -222,23 +220,6 @@
     }
     .hero-photo-badge strong{display:block;font-size:14px;font-weight:600;margin-bottom:2px}
 
-
-    /* ── FETCH STRIP (between hero and marquee) ── */
-    .fetch-strip{
-      background:var(--cream);
-      display:flex;
-      align-items:flex-end;
-      justify-content:flex-end;
-      overflow:hidden;
-      line-height:0;
-      /* no extra height; driven by the GIF's natural size */
-    }
-    .fetch-strip img{
-      display:block;
-      width:298px;   /* native width, no upscaling */
-      height:117px;
-      flex-shrink:0;
-    }
 
     /* ── MARQUEE ─────────────────────────────────── */
     .marquee-strip{background:var(--red);overflow:hidden;white-space:nowrap;padding:16px 0}
@@ -277,8 +258,6 @@
       background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0,rgba(255,255,255,.04) 1px,transparent 0,transparent 50%);
       background-size:16px 16px;
     }
-    .value-img-label{position:relative;font-family:var(--sans);font-size:12px;color:rgba(255,255,255,.28);text-align:center;padding:16px}
-    .value-img-label strong{display:block;font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(139,26,26,.6);margin-bottom:6px}
     .value-number{font-family:var(--serif);font-size:48px;font-weight:700;font-style:italic;color:rgba(200,80,80,.7);line-height:1;margin-bottom:14px}
     .value-title{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--white);margin-bottom:14px}
     .value-text{font-family:var(--sans);font-size:19px;font-weight:300;line-height:1.85;color:rgba(255,255,255,.72)}
@@ -338,10 +317,6 @@
       display:flex;align-items:center;justify-content:center;
       position:relative;overflow:hidden;
     }
-    .bio-photo-h::before{display:none}
-    .bio-photo-h-inner{position:relative;text-align:center;padding:24px}
-    .bio-photo-h-inner strong{display:block;font-family:var(--serif);font-size:19px;font-weight:700;color:var(--red);margin-bottom:5px}
-    .bio-photo-h-inner span{font-family:var(--sans);font-size:12px;color:var(--warm-gray);letter-spacing:0.08em}
     .bio-text-cell{padding:8px 0}
     .bio-name{font-family:var(--serif);font-size:42px;font-weight:700;color:var(--charcoal);margin-bottom:6px}
     .bio-role-line{font-family:var(--sans);font-size:15px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:6px}
@@ -483,11 +458,6 @@
     .reveal-d3{transition-delay:0.36s}
 
 
-    @media(max-width:960px){
-      .nav-links{gap:24px}
-      .nav-links a{font-size:13px}
-      .nav-cta{padding:11px 20px!important;font-size:15px!important}
-    }
     /* ── TABLET ──────────────────────────────────── */
     @media(max-width:1024px){
       .values-grid{grid-template-columns:1fr 1fr;gap:32px}
@@ -496,6 +466,11 @@
       .philosophy-wrap{flex-direction:column}
       .philosophy-text{padding:56px 40px}
       .philosophy-gif img{width:100%;max-width:300px;margin:0 auto}
+    }
+    @media(max-width:960px){
+      .nav-links{gap:24px}
+      .nav-links a{font-size:13px}
+      .nav-cta{padding:11px 20px!important;font-size:15px!important}
     }
 
     /* ── MOBILE ──────────────────────────────────── */
@@ -511,8 +486,6 @@
       .hero-headline{font-size:clamp(44px,11vw,64px)}
       .hero-sub{font-size:22px;line-height:1.6}
       .hero-actions{gap:20px}
-      .fetch-strip{justify-content:center}
-      .fetch-strip img{width:min(298px,100%);height:auto}
       .hero-photo-side{order:2;min-height:auto;padding:0 24px 48px;justify-content:flex-start;opacity:1;animation:none}
       .hero-photo-frame{width:100%;aspect-ratio:3/4;max-height:70vw}
 
@@ -564,7 +537,7 @@
 
 <nav class="nav" id="nav">
   <a href="#home" class="nav-logo">
-    <img src="images/youbetterwalkheader.gif" alt="You Better Walk"/>
+    <img src="images/youbetterwalkheader.gif" alt="You Better Walk" width="298" height="136"/>
   </a>
   <ul class="nav-links">
     <li><a href="#values">About</a></li>
@@ -596,7 +569,7 @@
   </div>
   <div class="hero-photo-side">
     <div class="hero-photo-frame">
-      <img src="images/bnsheaderv2.png" alt="Brent and Steve, co-owners of You Better Walk" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;border-radius:3px;" />
+      <img src="images/bnsheaderv2.png" alt="Brent and Steve, co-owners of You Better Walk" width="1080" height="1350" fetchpriority="high" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;border-radius:3px;" />
       <div class="hero-photo-badge">
         <strong>Steve &amp; Brent</strong>
         Co-Owners<br>You Better Walk
@@ -617,8 +590,6 @@
     <span class="marquee-item">Affirmation</span><span class="marquee-pip"></span>
     <span class="marquee-item">Affection</span><span class="marquee-pip"></span>
     <span class="marquee-item">Upper Arlington</span><span class="marquee-pip"></span>
-    <span class="marquee-item">Worthington</span><span class="marquee-pip"></span>
-    <span class="marquee-item">Clintonville</span><span class="marquee-pip"></span>
     <span class="marquee-item">Grandview Heights</span><span class="marquee-pip"></span>
     <span class="marquee-item">Marble Cliff</span><span class="marquee-pip"></span>
     <span class="marquee-item">You Better Walk</span><span class="marquee-pip"></span>
@@ -629,8 +600,6 @@
     <span class="marquee-item">Affirmation</span><span class="marquee-pip"></span>
     <span class="marquee-item">Affection</span><span class="marquee-pip"></span>
     <span class="marquee-item">Upper Arlington</span><span class="marquee-pip"></span>
-    <span class="marquee-item">Worthington</span><span class="marquee-pip"></span>
-    <span class="marquee-item">Clintonville</span><span class="marquee-pip"></span>
     <span class="marquee-item">Grandview Heights</span><span class="marquee-pip"></span>
     <span class="marquee-item">Marble Cliff</span><span class="marquee-pip"></span>
     <span class="marquee-item">You Better Walk</span><span class="marquee-pip"></span>
@@ -645,19 +614,19 @@
   </div>
   <div class="values-grid">
     <div class="value-card reveal reveal-d1">
-      <div class="value-img" style="overflow:hidden;background:#000;"><video autoplay muted loop playsinline aria-label="Enrichment" style="width:100%;height:100%;object-fit:cover;display:block;"><source src="images/Enrichment.mp4" type="video/mp4"/></video></div>
+      <div class="value-img" style="overflow:hidden;background:#000;"><video class="lazy-video" autoplay muted loop playsinline preload="none" aria-label="Enrichment" style="width:100%;height:100%;object-fit:cover;display:block;"><source data-src="images/Enrichment.mp4" type="video/mp4"/></video></div>
       <div class="value-number">01</div>
       <div class="value-title">Enrichment</div>
       <p class="value-text">A walk is more than a bathroom break. It's a chance to sniff, stretch, and engage. Every outing is done with intention because even a walk around the block could be the best part of their day.</p>
     </div>
     <div class="value-card reveal reveal-d2">
-      <div class="value-img" style="overflow:hidden;background:#000;"><video autoplay muted loop playsinline aria-label="Affirmation" style="width:100%;height:100%;object-fit:cover;display:block;"><source src="images/Affirmation.mp4" type="video/mp4"/></video></div>
+      <div class="value-img" style="overflow:hidden;background:#000;"><video class="lazy-video" autoplay muted loop playsinline preload="none" aria-label="Affirmation" style="width:100%;height:100%;object-fit:cover;display:block;"><source data-src="images/Affirmation.mp4" type="video/mp4"/></video></div>
       <div class="value-number">02</div>
       <div class="value-title">Affirmation</div>
       <p class="value-text">Our pets are present and accepting of our humanity, and we follow their example. Anyone with empathy and an open heart is a welcome and cherished client, and every pet deserves an opportunity to be served.</p>
     </div>
     <div class="value-card reveal reveal-d3">
-      <div class="value-img" style="overflow:hidden;background:#000;"><video autoplay muted loop playsinline aria-label="Affection" style="width:100%;height:100%;object-fit:cover;display:block;"><source src="images/Affection.mp4" type="video/mp4"/></video></div>
+      <div class="value-img" style="overflow:hidden;background:#000;"><video class="lazy-video" autoplay muted loop playsinline preload="none" aria-label="Affection" style="width:100%;height:100%;object-fit:cover;display:block;"><source data-src="images/Affection.mp4" type="video/mp4"/></video></div>
       <div class="value-number">03</div>
       <div class="value-title">Affection</div>
       <p class="value-text">As pet owners and caretakers, our job is ensuring pets know they are loved. Your pet is family and a fully-fledged individual with their own personality, and we'll treat them that way every single visit.</p>
@@ -682,7 +651,7 @@
       <div class="divider"></div>
     </div>
     <div class="reveal reveal-d1">
-      <p class="services-note">Serving the pets and families of <strong>Upper Arlington, Grandview Heights, Marble Cliff, Worthington,</strong> and <strong>Clintonville.</strong> <span style="font-weight:200;color:var(--warm-gray)">Additional areas considered upon request. Distance from Upper Arlington factors into all service rates and is discussed before services begin.</span></p>
+      <p class="services-note">Serving the pets and families of <strong>Upper Arlington, Grandview Heights,</strong> and <strong>Marble Cliff.</strong> <span style="font-weight:200;color:var(--warm-gray)">Additional areas considered upon request. Distance from Upper Arlington factors into all service rates and is discussed before services begin.</span></p>
     </div>
   </div>
   <div class="services-grid">
@@ -741,7 +710,7 @@
     <p class="philosophy-attr">Brent, Co-Owner &nbsp;&bull;&nbsp; You Better Walk</p>
   </div>
   <div class="philosophy-gif">
-    <img src="images/catplay.gif" alt="A person playing with their cat" />
+    <img src="images/catplay.gif" alt="A person playing with their cat" width="300" height="169" loading="lazy" decoding="async" />
   </div>
 </div>
 
@@ -760,11 +729,11 @@
   <div class="bio-row reveal">
     <div class="bio-photo-cell">
       <div class="bio-photo-h" style="background:var(--charcoal);border-color:var(--cream-dark);">
-        <img src="images/BrentBio.png" alt="Brent, owner of You Better Walk" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:3px;" />
+        <img src="images/BrentBio.png" alt="Brent, owner of You Better Walk" width="1836" height="1377" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:3px;" />
       </div>
       <!-- Candid family photo -->
       <div style="margin-top:12px;border-radius:3px;overflow:hidden;border:1px solid var(--cream-dark);">
-        <img src="images/BrentBioFamily.png" alt="Brent at home with his son and Steve" style="width:100%;height:auto;display:block;border-radius:2px;" />
+        <img src="images/BrentBioFamily.png" alt="Brent at home with his son and Steve" width="1836" height="1377" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border-radius:2px;" />
       </div>
     </div>
     <div class="bio-text-cell">
@@ -774,7 +743,7 @@
       <p class="bio-role-sub">Cat-Raised, Dog-Owned &bull; Over 25 years of experience with both.</p>
       <p class="bio-copy">Hello there! I've been a resident of Columbus, Ohio for over 20 years. Originally from NW Ohio, I have experience being owned and loved by cats and dogs for a majority of my life. After walking and caring for dogs of all ages for more than a decade, it became clear that people are still looking for someone reliable and not part of an app or a chain to fill in the gaps of care for their pets. It felt like a natural fit to fill it.</p>
       <div class="bio-volxp">
-        <img src="images/volxp.png.png" alt="Volunteer experience with Toledo Humane Society, Lucas County, Columbus Humane, and Mission Meow" />
+        <img src="images/volxp.png.png" alt="Volunteer experience with Toledo Humane Society, Lucas County, Columbus Humane, and Mission Meow" width="555" height="95" loading="lazy" decoding="async" />
       </div>
     </div>
   </div>
@@ -787,9 +756,9 @@
     </div>
     <div class="bio-photo-cell">
       <div class="bio-photo-h" style="background:#000;border-color:var(--cream-dark);overflow:hidden;">
-        <video autoplay muted loop playsinline
+        <video class="lazy-video" autoplay muted loop playsinline preload="none" aria-label="Steve the dog"
           style="width:100%;height:100%;object-fit:cover;display:block;border-radius:3px;">
-          <source src="images/SteveBio.mp4" type="video/mp4" />
+          <source data-src="images/SteveBio.mp4" type="video/mp4" />
         </video>
       </div>
     </div>
@@ -816,7 +785,7 @@
         </div>
         <div>
           <p class="contact-label">Service Area</p>
-          <p class="contact-value" style="font-size:19px;font-weight:800">Upper Arlington <span style="font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--red)">(Home Base)</span>, Grandview Heights,<br>Marble Cliff, Worthington &amp; Clintonville</p>
+          <p class="contact-value" style="font-size:19px;font-weight:800">Upper Arlington <span style="font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--red)">(Home Base)</span>,<br>Grandview Heights &amp; Marble Cliff</p>
           <p class="contact-note">Not sure if you are in range? Ask anyway. Distance factors into scheduling and rates, but some people (and pets) genuinely need help, and we would rather have the conversation than lose a good client family or help a pet that needs it.</p>
         </div>
       </div>
@@ -892,6 +861,19 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
   }, {threshold:0.08, rootMargin:'0px 0px -32px 0px'});
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Lazy-load autoplay videos when they approach the viewport
+  const vio = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const video = e.target;
+      video.querySelectorAll('source[data-src]').forEach(s => { s.src = s.dataset.src; });
+      video.load();
+      video.play().catch(() => {});
+      vio.unobserve(video);
+    });
+  }, {rootMargin:'400px 0px'});
+  document.querySelectorAll('.lazy-video').forEach(v => vio.observe(v));
 
   // ── Contact form (Formspree) ─────────────────────────────────────
   const contactForm = document.getElementById('contactForm');
