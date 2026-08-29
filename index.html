@@ -388,6 +388,22 @@
       padding:5px 0;border-bottom:1px solid var(--cream-mid);display:flex;gap:12px;
     }
     .service-includes li::before{content:'+';color:var(--red);flex-shrink:0}
+    .service-menu{list-style:none;margin:0 0 20px;border-top:1px solid var(--cream-mid)}
+    .service-menu li{
+      display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+      padding:8px 0;border-bottom:1px solid var(--cream-mid);
+      font-family:var(--sans);font-size:17px;font-weight:400;color:var(--charcoal);
+    }
+    .service-menu li span:last-child{font-weight:600;color:var(--red);white-space:nowrap}
+    .services-addons{
+      display:grid;grid-template-columns:1fr 1fr;gap:40px;
+      background:var(--white);border:1px solid var(--cream-dark);border-radius:2px;
+      padding:36px 40px;margin-top:24px;
+    }
+    .addons-title{
+      font-family:var(--sans);font-size:13px;font-weight:700;
+      letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:6px;
+    }
     /* Solid CTA button */
     .service-cta{
       display:inline-block;margin-top:24px;
@@ -511,6 +527,7 @@
 
       .policy-callout{padding:32px 20px;border-left:3px solid var(--red);margin-top:36px}
       .services{padding:64px 24px}
+      .services-addons{grid-template-columns:1fr;gap:28px;padding:28px 20px}
       .services-top{grid-template-columns:1fr;gap:24px}
       .services-grid{grid-template-columns:1fr}
 
@@ -660,15 +677,21 @@
       <div class="divider"></div>
     </div>
     <div class="reveal reveal-d1">
-      <p class="services-note">Serving the pets and families of <strong>Upper Arlington, Grandview Heights,</strong> and <strong>Marble Cliff.</strong> <span style="font-weight:200;color:var(--warm-gray)">Additional areas considered upon request. Distance from Upper Arlington factors into all service rates and is discussed before services begin.</span></p>
+      <p class="services-note">Serving the pets and families of <strong>Upper Arlington, Grandview Heights,</strong> and <strong>Marble Cliff.</strong> <span style="font-weight:200;color:var(--warm-gray)">Additional areas considered upon request. Distance from Upper Arlington factors into all service rates and is discussed before services begin. New clients begin with a free meet and greet; once you're with us, we ask for 48 hours' notice on new bookings.</span></p>
     </div>
   </div>
   <div class="services-grid">
     <div class="service-card reveal reveal-d1">
       <h3 class="service-name">Dog Walking</h3>
-      <p class="service-price">From $22</p>
-      <p class="service-tagline">20, 30, 45 &amp; 60 minute options</p>
+      <p class="service-price">From $18</p>
+      <p class="service-tagline">Private solo walks, sized to your dog</p>
       <p class="service-desc">Solo walks built around your dog's pace and personality. A real walk, unhurried, with full attention and a photo report card waiting for you when we're done.</p>
+      <ul class="service-menu">
+        <li><span>20-minute walk</span><span>$18</span></li>
+        <li><span>30-minute walk</span><span>$22</span></li>
+        <li><span>45-minute walk</span><span>$28</span></li>
+        <li><span>60-minute walk</span><span>$33</span></li>
+      </ul>
       <ul class="service-includes">
         <li>Route and visit updates</li>
         <li>Photo report card after every visit</li>
@@ -679,17 +702,21 @@
     </div>
     <div class="service-card reveal reveal-d2">
       <h3 class="service-name">Pet Sitting</h3>
-      <p class="service-price">From $25</p>
-      <p class="service-tagline">Drop-in 30-minute visits &bull; Overnight Stays Optional</p>
+      <p class="service-price">From $22</p>
+      <p class="service-tagline">Drop-in visits &amp; overnights for dogs and cats</p>
       <p class="service-desc">In-home visits for dogs and cats while you are away. Your pet stays where they are most comfortable, cared for by someone who genuinely wants to be there.</p>
+      <ul class="service-menu">
+        <li><span>30-minute visit</span><span>$22</span></li>
+        <li><span>60-minute visit</span><span>$32</span></li>
+        <li><span>90-minute visit</span><span>$42</span></li>
+        <li><span>Overnight stay</span><span>$50 / night</span></li>
+      </ul>
       <ul class="service-includes">
         <li>Feeding, fresh water, litter</li>
         <li>Enrichment and play time</li>
-        <li>Additional time can be added depending on need</li>
         <li>Medication administration</li>
         <li>Photo report card after every visit</li>
-        <li>Mail collected, blinds rotated, plants watered - Optional Add</li>
-        <li>Overnight stays available</li>
+        <li>Mail collected, blinds rotated, plants watered - included</li>
         <li>Free meet and greet before we start</li>
       </ul>
       <a href="#contact" class="service-cta">Inquire Now</a>
@@ -708,6 +735,26 @@
         <li>Free meet and greet before we start</li>
       </ul>
       <a href="#contact" class="service-cta">Inquire Now</a>
+    </div>
+  </div>
+  <div class="services-addons reveal">
+    <div>
+      <p class="addons-title">Add-Ons</p>
+      <ul class="service-includes" style="border-top:none;padding-top:4px">
+        <li>Additional pet on the same visit &mdash; $5</li>
+        <li>Puppies under one year &mdash; $5 per visit</li>
+        <li>Major holidays &mdash; $10 per visit, $15 per overnight</li>
+        <li>Extended travel &mdash; quoted at your meet and greet</li>
+      </ul>
+    </div>
+    <div>
+      <p class="addons-title">Always Included, Never Charged</p>
+      <ul class="service-includes" style="border-top:none;padding-top:4px">
+        <li>Medication administration</li>
+        <li>Photo report card after every visit</li>
+        <li>Mail, plants, and blinds while you're away</li>
+        <li>The meet and greet, always</li>
+      </ul>
     </div>
   </div>
 </section>
