@@ -465,6 +465,19 @@
           <input type="email" id="emergEmail" name="emergEmail" placeholder="their@email.com"/>
         </div>
       </div>
+
+      <label class="field-label" style="margin:20px 0 4px">Local Backup with Home Access <span style="font-weight:400;text-transform:none;letter-spacing:0">(strongly encouraged)</span></label>
+      <p class="section-intro" style="margin-bottom:12px">Someone nearby - a neighbor, friend, or family member - who has (or can get) access to your home and could step in for your pet if severe weather or a road closure ever prevents us from reaching you. This can be the same person as above if they live close by.</p>
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label" for="backupName">Backup Name</label>
+          <input type="text" id="backupName" name="backupName"/>
+        </div>
+        <div class="field">
+          <label class="field-label" for="backupPhone">Backup Phone</label>
+          <input type="tel" id="backupPhone" name="backupPhone" placeholder="(614) 000-0000"/>
+        </div>
+      </div>
     </div>
 
     <!-- ── SECTION 4: SERVICES & SCHEDULING ── -->
@@ -523,7 +536,7 @@
           <input type="checkbox" id="svc6" name="services" value="Bespoke Care Arrangement"/>
           <label class="check-label" for="svc6">
             <span class="check-box"><svg class="check-box-tick" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span><strong>Bespoke Care</strong> - Custom arrangement for complex households, medical needs, or specialized routines. Rate and scope to be agreed in writing.</span>
+            <span><strong>Bespoke Care</strong> - Custom arrangement for complex households or specialized routines. Rate and scope to be agreed in writing.</span>
           </label>
         </div>
       </div>
@@ -615,6 +628,10 @@
 
       <div class="policy-block">
         <p><strong>Cancellation.</strong> We ask for at least 48 hours' notice for any cancellation or schedule change. Cancellations with less than 48 hours' notice may be charged 50% of the scheduled visit. Cancellations with less than 24 hours' notice, same-day cancellations, and no-shows are charged 100% of the scheduled visit. Holiday visit cancellations are charged at 100% regardless of notice given.</p>
+
+        <p><strong>Weather &amp; Safety Modifications.</strong> Visits proceed in most weather. In extreme heat, cold, ice, or severe storms, walks may be shortened for the safety of your pet and our walker, with the remaining time spent on indoor play, enrichment, and care at the normal rate; any modification is noted in your visit report. During declared county snow emergencies: under Level 1, services continue with flexible timing; under Level 2, essential visits are prioritized (pets home alone come first) and non-essential visits are rescheduled without fees; under Level 3, roads are legally closed to non-emergency travel and services are suspended, with no charges to you and your designated local backup contacted where applicable.</p>
+
+        <p><strong>Force Majeure.</strong> Neither party is liable for failure or delay in performance caused by events beyond reasonable control, including severe weather, declared emergencies, road closures, government orders, or natural disasters. Fees for services not rendered due to such events are credited or refunded. In such circumstances we will make reasonable efforts to communicate promptly and to coordinate care with your designated backup contact.</p>
       </div>
 
       <div class="policy-block">
@@ -638,7 +655,7 @@
       </div>
 
       <div class="policy-block">
-        <p><strong>Holiday &amp; Peak Season Rates.</strong> Services provided during the full week surrounding major holidays (New Year's, Easter, Memorial Day, July 4th, Labor Day, Thanksgiving, Christmas) are subject to a holiday surcharge communicated in advance. Peak season rates (Memorial Day through Labor Day) may apply to new service arrangements. You will always be notified before any rate adjustment takes effect.</p>
+        <p><strong>Holiday Rates.</strong> Services provided during the following periods carry a holiday surcharge ($10 per visit, $15 per overnight): Easter weekend (Good Friday through Easter Sunday), Memorial Day weekend (Saturday through Monday), Independence Day (July 3rd through 5th), Labor Day weekend (Saturday through Monday), Thanksgiving (Wednesday through Sunday), and December 24th through January 1st. All other dates are standard rates. You will always be notified before any rate adjustment takes effect.</p>
       </div>
 
       <label class="field-label" style="margin-bottom:12px;margin-top:24px">Policy Acknowledgment <span class="req">*</span></label>
@@ -658,7 +675,7 @@
       <div class="section-header">
         <div class="section-number">07</div>
         <h2 class="section-title">Photo &amp; Media <em>Consent.</em></h2>
-        <p class="section-intro">We photograph and send a photo report card after every visit. The questions below are about what we do with those photos beyond that.</p>
+        <p class="section-intro">We may photograph your pet during visits to share with you as part of your visit updates. The questions below are about what we do with those photos beyond that.</p>
       </div>
 
       <label class="field-label" style="margin-bottom:12px">Please select your preference <span class="req">*</span></label>
@@ -887,6 +904,8 @@
       emerg_relation:  f('emergRelation'),
       emerg_phone:     f('emergPhone'),
       emerg_email:     f('emergEmail'),
+      backup_name:     f('backupName') || 'Not provided',
+      backup_phone:    f('backupPhone') || 'Not provided',
       services:        checkedValues('services') || 'Not specified',
       walk_frequency:  f('walkFreq'),
       start_date:      f('startDate'),
