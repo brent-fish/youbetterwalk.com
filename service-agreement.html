@@ -33,10 +33,10 @@
     {{start_date}}       {{rate_notes}}
     {{emergency_name}}   {{emergency_phone}}
     {{photo_consent}}    {{timestamp}}
-    {{signature_data}}   (this is a base64 PNG — see note below)
+    {{signature_data}}   (plain text: typed electronic signature)
 
   Recommended: Create two templates.
-    Template A (to you): full details + signature image
+    Template A (to you): full details + typed signature
     Template B (to client): clean confirmation copy
 
   Note your TEMPLATE IDs (looks like "template_xxxxxxx").
@@ -211,24 +211,6 @@
     .sig-wrap {
       background: var(--white); border: 1.5px solid var(--cream-dark);
       border-radius: 6px; overflow: hidden;
-    }
-    .sig-header {
-      padding: 10px 16px; background: var(--cream-mid);
-      border-bottom: 1px solid var(--cream-dark);
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .sig-header-text {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--warm-gray);
-    }
-    .sig-clear {
-      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--red); background: none;
-      border: none; cursor: pointer; padding: 4px 0; transition: opacity 0.2s;
-    }
-    .sig-clear:hover { opacity: 0.7; }
-    #sigCanvas {
-      display: block; width: 100%; touch-action: none; cursor: crosshair;
     }
     .sig-hint {
       font-size: 12px; color: var(--warm-gray); font-weight: 300;
@@ -664,23 +646,20 @@
         </div>
       </div>
 
-      <label class="field-label" style="margin-bottom:10px">Signature <span class="req">*</span></label>
+      <label class="field-label" for="sigTyped" style="margin-bottom:10px">Signature <span class="req">*</span></label>
       <div class="sig-wrap">
-        <div class="sig-header">
-          <span class="sig-header-text">Draw your signature</span>
-          <button type="button" class="sig-clear" id="sigClear">Clear</button>
-        </div>
-        <canvas id="sigCanvas" height="160"></canvas>
+        <input type="text" id="sigTyped" name="sigTyped" placeholder="Type your full name to sign" autocomplete="off" required
+          style="border:none;border-radius:0;background:transparent;font-family:var(--serif);font-style:italic;font-size:30px;line-height:1.3;color:var(--charcoal);padding:18px 20px;"/>
       </div>
-      <p class="sig-hint">Use your finger or mouse to sign above.</p>
-      <p class="sig-required-msg" id="sigRequired">A signature is required to complete this agreement.</p>
+      <p class="sig-hint">Typing your full name here constitutes your electronic signature.</p>
+      <p class="sig-required-msg" id="sigRequired">Please type your full name above to sign this agreement.</p>
 
       <div style="margin-top:24px">
         <div class="check-item">
           <input type="checkbox" id="finalAck" name="finalAck" required/>
           <label class="check-label" for="finalAck">
             <span class="check-box"><svg class="check-box-tick" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            I understand this is an electronic agreement. My signature above represents my informed consent and my commitment to the terms and policies of You Better Walk LLC.
+            I understand this is an electronic agreement and that typing my name above constitutes my electronic signature. It represents my informed consent and my commitment to the terms and policies of You Better Walk LLC.
           </label>
         </div>
       </div>
@@ -724,7 +703,7 @@
   const OWNER_EMAIL = 'youbetterwalkllc@gmail.com';
   // ─────────────────────────────────────────────────
 
-  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+  if (window.emailjs) emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
   // ── PROGRESS BAR ──────────────────────────────────
   const fill = document.getElementById('progressFill');
@@ -739,8 +718,7 @@
         filled++;
       }
     });
-    const hasSig = !sigCanvas.isEmpty();
-    const pct = Math.round(((filled + (hasSig ? 1 : 0)) / (inputs.length + 1)) * 100);
+    const pct = Math.round((filled / inputs.length) * 100);
     fill.style.width = Math.min(pct, 100) + '%';
   }
   document.getElementById('contractForm').addEventListener('input', updateProgress);
@@ -751,76 +729,6 @@
     const preview = document.getElementById('emailPreview');
     preview.textContent = this.value.trim() || 'your email address';
   });
-
-  // ── SIGNATURE PAD ──────────────────────────────────
-  const sigCanvas = (function() {
-    const canvas = document.getElementById('sigCanvas');
-    const ctx = canvas.getContext('2d');
-    let drawing = false;
-    let hasDrawn = false;
-
-    function resize() {
-      const rect = canvas.parentElement.getBoundingClientRect();
-      const ratio = window.devicePixelRatio || 1;
-      canvas.width = rect.width * ratio;
-      canvas.height = 160 * ratio;
-      canvas.style.width = rect.width + 'px';
-      canvas.style.height = '160px';
-      ctx.scale(ratio, ratio);
-      ctx.strokeStyle = '#261A1A';
-      ctx.lineWidth = 2;
-      ctx.lineCap = 'round';
-      ctx.lineJoin = 'round';
-    }
-    resize();
-    window.addEventListener('resize', resize);
-
-    function getPos(e) {
-      const rect = canvas.getBoundingClientRect();
-      const src = e.touches ? e.touches[0] : e;
-      return {
-        x: src.clientX - rect.left,
-        y: src.clientY - rect.top
-      };
-    }
-
-    function start(e) {
-      e.preventDefault();
-      drawing = true;
-      const p = getPos(e);
-      ctx.beginPath();
-      ctx.moveTo(p.x, p.y);
-    }
-    function move(e) {
-      e.preventDefault();
-      if (!drawing) return;
-      const p = getPos(e);
-      ctx.lineTo(p.x, p.y);
-      ctx.stroke();
-      hasDrawn = true;
-    }
-    function end() { drawing = false; updateProgress(); }
-
-    canvas.addEventListener('mousedown', start);
-    canvas.addEventListener('mousemove', move);
-    canvas.addEventListener('mouseup', end);
-    canvas.addEventListener('mouseleave', end);
-    canvas.addEventListener('touchstart', start, { passive: false });
-    canvas.addEventListener('touchmove', move, { passive: false });
-    canvas.addEventListener('touchend', end);
-
-    return {
-      isEmpty: () => !hasDrawn,
-      toDataURL: () => canvas.toDataURL('image/png'),
-      clear: () => {
-        ctx.clearRect(0, 0, canvas.width / (window.devicePixelRatio || 1), canvas.height / (window.devicePixelRatio || 1));
-        hasDrawn = false;
-        updateProgress();
-      }
-    };
-  })();
-
-  document.getElementById('sigClear').addEventListener('click', () => sigCanvas.clear());
 
   // ── DATE DEFAULT ───────────────────────────────────
   document.getElementById('sigDate').value = new Date().toISOString().split('T')[0];
@@ -862,7 +770,8 @@
       photo_consent:   radioValue('photoConsent'),
       sig_name:        f('sigName'),
       sig_date:        f('sigDate'),
-      signature_data:  sigCanvas.toDataURL(),
+      sig_typed:       f('sigTyped'),
+      signature_data:  'Electronically signed (typed signature): ' + f('sigTyped'),
       timestamp:       new Date().toLocaleString('en-US', { timeZone: 'America/New_York', dateStyle: 'full', timeStyle: 'short' }) + ' ET',
       owner_email:     OWNER_EMAIL,
     };
@@ -876,8 +785,9 @@
     const btn    = document.getElementById('submitBtn');
     const sigReq = document.getElementById('sigRequired');
 
-    // Validate signature
-    if (sigCanvas.isEmpty()) {
+    // Validate typed signature
+    const sigTyped = document.getElementById('sigTyped');
+    if (sigTyped.value.trim().length < 2) {
       sigReq.style.display = 'block';
       sigReq.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
