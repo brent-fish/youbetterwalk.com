@@ -485,60 +485,7 @@
       <div class="section-header">
         <div class="section-number">04</div>
         <h2 class="section-title">Services &amp; <em>Schedule.</em></h2>
-        <p class="section-intro">Select all services you are enrolling in. Specific scheduling, rates, and any customizations will be confirmed in writing before services begin.</p>
-      </div>
-
-      <label class="field-label" style="margin-bottom:12px">Services Requested <span class="req">*</span></label>
-      <div class="check-group" id="servicesGroup">
-        <div class="check-item">
-          <input type="checkbox" id="svc1" name="services" value="Dog Walking - 20 min ($20+)"/>
-          <label class="check-label" for="svc1">
-            <span class="check-box"><svg class="check-box-tick" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span><strong>Dog Walking - 20 minutes</strong> - Potty break / quick visit. From $20.</span>
-          </label>
-        </div>
-        <div class="check-item">
-          <input type="checkbox" id="svc2" name="services" value="Dog Walking - 30 min"/>
-          <label class="check-label" for="svc2">
-            <span class="check-box"><svg class="check-box-tick" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span><strong>Dog Walking - 30 minutes</strong> - Standard solo walk. Rate confirmed at onboarding.</span>
-          </label>
-        </div>
-        <div class="check-item">
-          <input type="checkbox" id="svc3" name="services" value="Dog Walking - 45 min"/>
-          <label class="check-label" for="svc3">
-            <span class="check-box"><svg class="check-box-tick" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span><strong>Dog Walking - 45 minutes</strong> - Extended walk for active dogs. Rate confirmed at onboarding.</span>
-          </label>
-        </div>
-        <div class="check-item">
-          <input type="checkbox" id="svc4" name="services" value="Dog Walking - 60 min"/>
-          <label class="check-label" for="svc4">
-            <span class="check-box"><svg class="check-box-tick" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span><strong>Dog Walking - 60 minutes</strong> - Long walk for high-energy breeds or extended enrichment. Rate confirmed at onboarding.</span>
-          </label>
-        </div>
-        <div class="check-item">
-          <input type="checkbox" id="svc5" name="services" value="Pet Sitting - Drop-In Visit"/>
-          <label class="check-label" for="svc5">
-            <span class="check-box"><svg class="check-box-tick" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span><strong>Pet Sitting - Drop-In Visit</strong> - In-home visit (30, 60, or 90 min) for dogs, cats, or other eligible pets. From $25.</span>
-          </label>
-        </div>
-        <div class="check-item">
-          <input type="checkbox" id="svc7" name="services" value="Pet Sitting - Overnight Stay"/>
-          <label class="check-label" for="svc7">
-            <span class="check-box"><svg class="check-box-tick" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span><strong>Pet Sitting - Overnight Stay</strong> - Overnight care in your home, roughly 7pm-7am, including evening and morning routines. From $50 per night; midday visits booked alongside at regular rates.</span>
-          </label>
-        </div>
-        <div class="check-item">
-          <input type="checkbox" id="svc6" name="services" value="Bespoke Care Arrangement"/>
-          <label class="check-label" for="svc6">
-            <span class="check-box"><svg class="check-box-tick" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span><strong>Bespoke Care</strong> - Custom arrangement for complex households or specialized routines. Rate and scope to be agreed in writing.</span>
-          </label>
-        </div>
+        <p class="section-intro">The specific services, scheduling, and rates for your household are agreed at your meet and greet and confirmed in writing before services begin. Current pricing is always available at youbetterwalk.com.</p>
       </div>
 
       <div class="field-row" style="margin-top:20px">
@@ -906,7 +853,7 @@
       emerg_email:     f('emergEmail'),
       backup_name:     f('backupName') || 'Not provided',
       backup_phone:    f('backupPhone') || 'Not provided',
-      services:        checkedValues('services') || 'Not specified',
+      services:        'Agreed at meet and greet - see rate notes',
       walk_frequency:  f('walkFreq'),
       start_date:      f('startDate'),
       rate_notes:      f('rateNotes') || 'To be confirmed',
