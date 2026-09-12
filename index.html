@@ -387,7 +387,8 @@
       font-family:var(--sans);font-size:17px;font-weight:400;color:var(--warm-gray);
       padding:5px 0;border-bottom:1px solid var(--cream-mid);display:flex;gap:12px;
     }
-    .service-includes li::before{content:'+';color:var(--red);flex-shrink:0}
+    .service-includes li::before{content:'\2713';color:var(--red);flex-shrink:0}
+    .services-addons .service-includes li::before{content:'+'}
     .service-menu{list-style:none;margin:0 0 20px;border-top:1px solid var(--cream-mid)}
     .service-menu li{
       display:flex;justify-content:space-between;align-items:baseline;gap:12px;
@@ -692,7 +693,6 @@
         <li><span>60-minute walk</span><span>$33</span></li>
       </ul>
       <ul class="service-includes">
-        <li>Route and visit updates</li>
         <li>Brief visit report of anything noteworthy (behavior/health)</li>
         <li>Free meet and greet before we start</li>
       </ul>
@@ -707,14 +707,13 @@
         <li><span>30-minute visit</span><span>$25</span></li>
         <li><span>60-minute visit</span><span>$32</span></li>
         <li><span>90-minute visit</span><span>$42</span></li>
-        <li><span>Overnight stay <a href="faq.html#overnight" style="color:var(--red);font-weight:500">(what's included?)</a></span><span>$85 / night</span></li>
+        <li><span>Overnight stay<br><a href="faq.html#overnight" style="color:var(--red);font-weight:500;font-size:15px">(what's included?)</a></span><span>$85 / night</span></li>
       </ul>
       <ul class="service-includes">
         <li>Feeding, fresh water, litter</li>
         <li>Enrichment and play time</li>
-        <li>Oral medication administration (if instructed)</li>
         <li>Brief visit report of anything noteworthy (behavior/health)</li>
-        <li>Mail brought in, plants watered, trash out on collection day</li>
+        <li>Mail brought in, plants watered</li>
         <li>Free meet and greet before we start</li>
       </ul>
       <a href="#contact" class="service-cta">Inquire Now</a>
