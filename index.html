@@ -54,6 +54,7 @@
       "Upper Arlington", "Grandview Heights", "Marble Cliff", "Worthington", "Clintonville"
     ],
     "priceRange": "$20-$85",
+    "paymentAccepted": "Cash, Venmo",
     "image": "https://youbetterwalk.com/images/og-share.jpg",
     "openingHoursSpecification": {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "08:00", "closes": "20:00"},
     "sameAs": ["https://www.instagram.com/youbetterwalkllc", "https://maps.app.goo.gl/LVExsaGWeaBKyjWD9", "https://nextdoor.com/page/you-better-walk-columbus-oh"],
@@ -61,8 +62,14 @@
       "@type": "OfferCatalog",
       "name": "Pet Care Services",
       "itemListElement": [
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Dog Walking"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Pet Sitting"}},
+        {"@type": "Offer", "price": "20", "priceCurrency": "USD", "itemOffered": {"@type": "Service", "name": "20-Minute Private Dog Walk"}},
+        {"@type": "Offer", "price": "22", "priceCurrency": "USD", "itemOffered": {"@type": "Service", "name": "30-Minute Private Dog Walk"}},
+        {"@type": "Offer", "price": "28", "priceCurrency": "USD", "itemOffered": {"@type": "Service", "name": "45-Minute Private Dog Walk"}},
+        {"@type": "Offer", "price": "33", "priceCurrency": "USD", "itemOffered": {"@type": "Service", "name": "60-Minute Private Dog Walk"}},
+        {"@type": "Offer", "price": "25", "priceCurrency": "USD", "itemOffered": {"@type": "Service", "name": "30-Minute Pet Sitting Visit"}},
+        {"@type": "Offer", "price": "28", "priceCurrency": "USD", "itemOffered": {"@type": "Service", "name": "45-Minute Pet Sitting Visit"}},
+        {"@type": "Offer", "price": "32", "priceCurrency": "USD", "itemOffered": {"@type": "Service", "name": "60-Minute Pet Sitting Visit"}},
+        {"@type": "Offer", "price": "85", "priceCurrency": "USD", "itemOffered": {"@type": "Service", "name": "Overnight Pet Sitting Stay"}},
         {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Bespoke Pet Care"}}
       ]
     }
@@ -542,6 +549,10 @@
       .hero-headline{font-size:40px}
       .section-headline{font-size:36px}
       .btn-primary{padding:14px 28px}
+    }
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}
+      .reveal{opacity:1!important;transform:none!important}
     }
   </style>
 </head>

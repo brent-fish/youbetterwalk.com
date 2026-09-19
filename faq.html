@@ -141,6 +141,14 @@
       },
       {
         "@type": "Question",
+        "name": "How do I pay?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We accept Venmo (@youbetterwalk) and cash. Payment details get sorted at your meet and greet, so there are no surprises later."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "What does an overnight stay include?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -176,6 +184,7 @@
     "email": "youbetterwalkllc@gmail.com",
     "telephone": "+16146410350",
     "priceRange": "$20-$85",
+    "paymentAccepted": "Cash, Venmo",
     "image": "https://youbetterwalk.com/images/og-share.jpg",
     "openingHoursSpecification": {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "08:00", "closes": "20:00"},
     "address": {
@@ -393,6 +402,10 @@
       .footer-top{flex-direction:column;gap:32px}
       .footer-links{text-align:left}
       summary{font-size:clamp(18px,5vw,22px);padding:20px 0}
+    }
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}
+      .reveal{opacity:1!important;transform:none!important}
     }
   </style>
 </head>
@@ -651,6 +664,13 @@
       <div class="faq-answer">
         <p>Within our core neighborhoods - <strong>Upper Arlington, Grandview Heights, and Marble Cliff</strong> - never. A bit further out - Clintonville and Worthington, for example - a small travel fee (typically $5 per visit) may apply based on drive time from our Upper Arlington home base. It's always quoted upfront at your meet and greet, never a surprise afterward.</p>
         <p><strong>Travel fees are waived for recurring weekly clients.</strong> If we're already in your neighborhood regularly, the drive stops being a factor - and so does the fee.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>How do I pay?<span class="summary-icon"></span></summary>
+      <div class="faq-answer">
+        <p>We accept <a href="https://www.venmo.com/u/youbetterwalk" rel="noopener"><strong>Venmo (@youbetterwalk)</strong></a> and cash. Payment details get sorted at your meet and greet, so there are no surprises later.</p>
       </div>
     </details>
 

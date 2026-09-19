@@ -48,6 +48,7 @@
   "email": "youbetterwalkllc@gmail.com",
   "telephone": "+16146410350",
   "priceRange": "$20-$85",
+  "paymentAccepted": "Cash, Venmo",
   "image": "https://youbetterwalk.com/images/og-share.jpg",
   "openingHoursSpecification": {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "08:00", "closes": "20:00"},
   "address": {
@@ -255,6 +256,10 @@
       footer{padding:48px 24px 32px}
       .footer-top{flex-direction:column;gap:32px}
       .footer-links{text-align:left}
+    }
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}
+      .reveal{opacity:1!important;transform:none!important}
     }
   </style>
 </head>

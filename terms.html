@@ -77,6 +77,9 @@
     .footer-brand{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--white);margin-bottom:8px}
     .footer-brand em{font-style:italic;color:var(--red)}
     @media(max-width:600px){nav{padding:0 20px}main{padding:calc(var(--nav-h) + 48px) 20px 72px}}
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}
+    }
   </style>
 </head>
 <body>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Page Not Found - You Better Walk</title>
+  <meta name="robots" content="noindex"/>
+  <meta name="theme-color" content="#FAF6F0"/>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;1,700&family=Jost:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --cream:#FAF6F0;--cream-dark:#DFD1BE;
+      --red:#8B1A1A;--red-hover:#A52020;
+      --charcoal:#261A1A;--warm-gray:#5C5050;--white:#FFFFFF;
+      --serif:'Cormorant Garamond',Georgia,serif;
+      --sans:'Jost',sans-serif;
+    }
+    body{
+      background:var(--cream);color:var(--charcoal);font-family:var(--sans);
+      min-height:100vh;display:flex;align-items:center;justify-content:center;
+      padding:32px;text-align:center;
+    }
+    .brand{font-family:var(--serif);font-size:26px;font-weight:700;margin-bottom:40px}
+    .brand em{font-style:italic;color:var(--red)}
+    h1{font-family:var(--serif);font-size:clamp(44px,8vw,72px);font-weight:700;line-height:1.08;margin-bottom:16px}
+    h1 em{font-style:italic;color:var(--red)}
+    p{font-size:18px;font-weight:300;color:var(--warm-gray);line-height:1.75;max-width:440px;margin:0 auto 32px}
+    .home-btn{
+      display:inline-block;background:var(--red);color:var(--white);
+      font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;
+      padding:16px 36px;border-radius:2px;text-decoration:none;transition:background 0.2s;
+    }
+    .home-btn:hover{background:var(--red-hover)}
+    .links{margin-top:28px;font-size:15px}
+    .links a{color:var(--red);text-decoration:none;margin:0 10px}
+    .links a:hover{text-decoration:underline}
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
+    }
+  </style>
+</head>
+<body>
+<main>
+  <p class="brand">You <em>Better</em> Walk</p>
+  <h1>This page <em>wandered off.</em></h1>
+  <p>It happens to the best of us. Steve does it at least once a walk. Let's get you back to familiar territory.</p>
+  <a class="home-btn" href="/">Back to Home</a>
+  <p class="links">
+    <a href="/#services">Services &amp; Pricing</a> &bull;
+    <a href="/faq.html">FAQ</a> &bull;
+    <a href="/#contact">Get in Touch</a>
+  </p>
+</main>
+</body>
+</html>
