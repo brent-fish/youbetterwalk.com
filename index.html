@@ -234,7 +234,7 @@
     .marquee-pip{display:inline-block;width:3px;height:3px;background:rgba(255,255,255,.45);border-radius:50%;vertical-align:middle}
 
     /* ── SECTION BASE ────────────────────────────── */
-    .section{padding:100px 80px}
+    .section{padding:100px max(80px,calc((100% - 1360px)/2))}
     .section-eyebrow{font-family:var(--sans);font-size:14px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--red);margin-bottom:16px}
     .section-headline{font-family:var(--serif);font-size:clamp(42px,4.2vw,62px);font-weight:700;line-height:1.1;color:var(--charcoal);margin-bottom:20px}
     .section-headline em{font-style:italic;color:var(--red)}
@@ -292,18 +292,19 @@
     .philosophy-gif img{display:block;width:300px;height:169px;vertical-align:bottom}
 
 
-    /* ── VOLUNTEER EXPERIENCE IMAGE ── */
+    /* ── VOLUNTEER EXPERIENCE ── */
     .bio-volxp{
       margin-top:28px;
       padding-top:24px;
       border-top:1px solid var(--cream-dark);
     }
-    .bio-volxp img{
-      width:100%;
-      max-width:520px;
-      height:auto;
-      display:block;
-      opacity:0.88;
+    .volxp-label{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+    .volxp-orgs{font-family:var(--sans);font-size:15px;font-weight:600;color:var(--warm-gray);line-height:1.9}
+    @media(min-width:1000px){
+      .team-standfirst{
+        font-family:var(--serif);font-size:23px;font-style:italic;font-weight:600;
+        color:var(--charcoal);line-height:1.55;max-width:440px;
+      }
     }
 
     /* ── ABOUT ───────────────────────────────────── */
@@ -769,7 +770,7 @@
       <div class="divider"></div>
     </div>
     <div>
-      <p class="services-note">One does the work. The other manages from the home office.</p>
+      <p class="services-note team-standfirst">One does the work. The other manages from the home office.</p>
     </div>
   </div>
   <div class="bio-row reveal">
@@ -789,7 +790,8 @@
       <p class="bio-role-sub">Cat-Raised, Dog-Owned &bull; Over 25 years of experience with both.</p>
       <p class="bio-copy">Hello there! I've been a resident of Columbus, Ohio for over 20 years. Originally from NW Ohio, I have experience being owned and loved by cats and dogs for a majority of my life. After walking and caring for dogs of all ages for more than a decade, it became clear that people are still looking for someone reliable and not part of an app or a chain to fill in the gaps of care for their pets. It felt like a natural fit to fill it.</p>
       <div class="bio-volxp">
-        <img src="images/volxp.png.png" alt="Volunteer experience with Toledo Humane Society, Lucas County, Columbus Humane, and Mission Meow" width="555" height="95" loading="lazy" decoding="async" />
+        <p class="volxp-label">Volunteer Experience</p>
+        <p class="volxp-orgs">Toledo Humane Society &nbsp;&bull;&nbsp; Lucas County Dog Shelter &nbsp;&bull;&nbsp; Columbus Humane &nbsp;&bull;&nbsp; Mission Meow</p>
       </div>
     </div>
   </div>
@@ -799,6 +801,7 @@
       <p class="bio-role-line">Co-Owner</p>
       <p class="bio-role-sub">Chief Inspiration Officer &bull; The Real Boss.</p>
       <p class="bio-copy">Steve is a Rat Terrier mix from Columbus Humane that joined our family about three years ago. He had big shoes to fill. Before his time, Hansel and Gretel, a pair of dachshund siblings, shared their long and rich lives with us. Even in his short tenure, Steve has picked me up, dusted me off, and got me moving through hard times. My best friend. I couldn't ask for a better boss.</p>
+      <p class="bio-copy" style="margin-top:16px">Want a boss like Steve? <a href="https://www.columbushumane.org/" rel="noopener" style="color:var(--red);font-weight:500">Adopt your own at Columbus Humane</a>.</p>
     </div>
     <div class="bio-photo-cell">
       <div class="bio-photo-h" style="background:#000;border-color:var(--cream-dark);overflow:hidden;">
