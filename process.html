@@ -415,6 +415,14 @@
   burger.addEventListener('click', () => drawer.classList.contains('open') ? closeDrawer() : openDrawer());
   closer.addEventListener('click', closeDrawer);
   document.querySelectorAll('.nav-drawer a').forEach(l => l.addEventListener('click', closeDrawer));
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a || typeof gtag !== 'function') return;
+    var h = a.getAttribute('href');
+    if (h.indexOf('tel:') === 0) gtag('event', 'phone_click', { link_url: h });
+    else if (h.indexOf('mailto:') === 0) gtag('event', 'email_click', { link_url: h });
+    else if (h.indexOf('venmo.com') !== -1) gtag('event', 'venmo_click', { link_url: h });
+  });
 </script>
 </body>
 </html>
