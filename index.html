@@ -350,8 +350,6 @@
       position:relative;
       z-index:1;
     }
-    .policy-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:44px;align-items:center}
-    .policy-photo{width:100%;height:auto;border-radius:3px;border:1px solid rgba(255,255,255,0.15)}
     .policy-eyebrow{
       font-family:var(--sans);font-size:14px;font-weight:700;
       letter-spacing:0.28em;text-transform:uppercase;
@@ -407,7 +405,9 @@
     .services-addons{
       background:var(--white);border:1px solid var(--cream-dark);border-radius:2px;
       padding:36px 40px;margin-top:24px;
+      display:grid;grid-template-columns:1.6fr 1fr;gap:44px;align-items:center;
     }
+    .addons-photo{width:100%;height:auto;border-radius:3px;border:1px solid var(--cream-dark)}
     .addons-title{
       font-family:var(--sans);font-size:13px;font-weight:700;
       letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:6px;
@@ -534,9 +534,8 @@
       .bio-row.flip .bio-text-cell{order:2}
 
       .policy-callout{padding:32px 20px;border-left:3px solid var(--red);margin-top:36px}
-      .policy-grid{grid-template-columns:1fr;gap:24px}
       .services{padding:64px 24px}
-      .services-addons{padding:28px 20px}
+      .services-addons{padding:28px 20px;grid-template-columns:1fr;gap:24px}
       .services-top{grid-template-columns:1fr;gap:24px}
       .services-grid{grid-template-columns:1fr}
 
@@ -674,14 +673,9 @@
 
   <!-- ONE DOG POLICY -->
   <div class="policy-callout reveal">
-    <div class="policy-grid">
-      <div>
-        <p class="policy-eyebrow">Our Walking Policy</p>
-        <h3 class="policy-headline">One dog. One walk. Every time.</h3>
-        <p class="policy-body">Every walk we provide is a private, dedicated session for your dog. No distractions or divided attention. In multi-dog households, each dog walks individually. This is not a limitation but by design. Your dog gets the undivided focus, safety, and care they deserve. Every single time. If you prefer back-to-back walks in a multiple-dog house, we are happy to offer a discount.</p>
-      </div>
-      <img class="policy-photo" src="images/onedog-buddies.webp" alt="Steve grinning on the couch while a small white pup waits by the ball for their turn to play" width="1000" height="750" loading="lazy" decoding="async"/>
-    </div>
+    <p class="policy-eyebrow">Our Walking Policy</p>
+    <h3 class="policy-headline">One dog. One walk. Every time.</h3>
+    <p class="policy-body">Every walk we provide is a private, dedicated session for your dog. No distractions or divided attention. In multi-dog households, each dog walks individually. This is not a limitation but by design. Your dog gets the undivided focus, safety, and care they deserve. Every single time. If you prefer back-to-back walks in a multiple-dog house, we are happy to offer a discount.</p>
   </div>
 
 </section>
@@ -761,6 +755,7 @@
         <li>Extended travel &mdash; quoted at your meet and greet</li>
       </ul>
     </div>
+    <img class="addons-photo" src="images/onedog-buddies.webp" alt="Steve grinning on the couch while a small white pup waits by the ball for their turn to play" width="1000" height="750" loading="lazy" decoding="async"/>
   </div>
 </section>
 
