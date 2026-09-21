@@ -49,13 +49,6 @@
     .intro{font-weight:300;color:var(--warm-gray);font-size:19px;margin-bottom:14px}
     .reviewed{font-size:14px;color:var(--warm-gray);font-weight:400;padding-bottom:36px;margin-bottom:44px;border-bottom:1px solid var(--cream-dark)}
     h2{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--charcoal);margin:52px 0 6px;scroll-margin-top:calc(var(--nav-h) + 20px)}
-    .anchor-nav{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 12px}
-    .anchor-nav a{
-      font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
-      color:var(--charcoal);background:var(--white);border:1px solid var(--cream-dark);
-      border-radius:999px;padding:7px 16px;transition:color 0.2s,border-color 0.2s;
-    }
-    .anchor-nav a:hover{color:var(--red);border-color:var(--red);text-decoration:none}
     h2 em{font-style:italic;color:var(--red)}
     .section-note{font-size:16px;font-weight:300;color:var(--warm-gray);margin-bottom:18px}
     .res-item{padding:16px 0;border-bottom:1px solid var(--cream-dark)}
@@ -69,16 +62,6 @@
     }
     .hub-card p{font-weight:300;color:var(--warm-gray);margin-bottom:12px}
     .hub-cta{font-weight:600;letter-spacing:0.06em}
-    .emergency-box{
-      background:var(--white);border:1px solid var(--cream-dark);border-left:4px solid var(--red);border-radius:3px;
-      padding:24px 28px;margin-top:18px;
-    }
-    .emergency-box p{margin-bottom:8px;font-weight:300;color:var(--warm-gray)}
-    .emergency-box strong{color:var(--charcoal);font-weight:600}
-    .big-num{font-size:20px;font-weight:700;color:var(--red);white-space:nowrap}
-    .lost-list{margin:0 0 14px 22px}
-    .lost-list li{margin-bottom:12px;font-weight:300;color:var(--warm-gray);font-size:17px;line-height:1.75}
-    .lost-list strong{font-weight:600;color:var(--charcoal)}
     footer{background:var(--charcoal);color:rgba(255,255,255,.55);font-family:var(--sans);font-size:14px;padding:48px;text-align:center;line-height:2}
     footer a{color:rgba(255,255,255,.7)}
     footer a:hover{color:var(--white)}
@@ -102,75 +85,17 @@
   <h1>The Central Ohio <em>Pet Guide.</em></h1>
   <p class="reviewed">Reviewed and updated September 2026. Spot something out of date? <a href="index.html#contact">Tell us</a> and we'll fix it.</p>
 
-  <div class="anchor-nav" role="navigation" aria-label="Page sections">
-    <a href="adopt.html">Adoption</a>
-    <a href="#emergency">Emergency Numbers</a>
-    <a href="#vets">Emergency Vets</a>
-    <a href="#insurance">Insurance</a>
-    <a href="#shop">Shop Local</a>
-    <a href="#license">Licensing</a>
-    <a href="#lost">Lost Pets</a>
-  </div>
-
   <h2>Adopt <em>Local.</em></h2>
   <div class="hub-card">
     <p>Steve came from a shelter. Your next best friend (or boss) is waiting in one too. We keep a full guide to Central Ohio's shelters and rescues, for dog people and cat people alike.</p>
     <p class="hub-cta"><a href="adopt.html">Browse the adoption guide &rarr;</a></p>
   </div>
 
-  <h2 id="emergency">In an <em>Emergency.</em></h2>
-  <p class="section-note">Save these before you need them. Both poison hotlines are staffed 24/7 by veterinary toxicologists; a consultation fee applies, and it's the best money you'll ever resent spending.</p>
-  <div class="emergency-box">
-    <p><strong>ASPCA Animal Poison Control</strong> &nbsp;<span class="big-num">(888)&nbsp;426-4435</span></p>
-    <p><strong>Pet Poison Helpline</strong> &nbsp;<span class="big-num">(855)&nbsp;764-7661</span></p>
+  <h2>Pet <em>Emergencies.</em></h2>
+  <div class="hub-card">
+    <p>Poison control numbers, every 24/7 emergency vet in the area, the lost-pet playbook, and how insurance keeps a crisis affordable. Save it before you need it.</p>
+    <p class="hub-cta"><a href="emergency.html">Open the emergency guide &rarr;</a></p>
   </div>
-
-  <h2 id="vets">Emergency &amp; Specialty <em>Vets.</em></h2>
-  <p class="section-note">A note on how we chose: emergency hospitals earn brutal online reviews by nature - people rate them on the worst day of their lives. So we don't rank them by stars. Every hospital here is open 24/7/365 with emergency clinicians on site. Know the one nearest you before you need it.</p>
-  <div class="res-item">
-    <p class="res-name"><a href="https://www.medvet.com/location/columbus/" rel="noopener">MedVet Columbus</a><span class="res-tag">24/7</span></p>
-    <p class="res-meta">300 E. Wilson Bridge Rd, Worthington &bull; The region's flagship emergency and specialty hospital, serving Columbus since 1988</p>
-  </div>
-  <div class="res-item">
-    <p class="res-name"><a href="https://www.veg.com/locations/ohio/easton" rel="noopener">VEG Easton</a><span class="res-tag">24/7</span></p>
-    <p class="res-meta">Morse Rd at Transit Dr (Easton) &bull; Walk straight in, stay with your pet through treatment</p>
-  </div>
-  <div class="res-item">
-    <p class="res-name"><a href="https://vet.osu.edu/vmc" rel="noopener">The Ohio State University Veterinary Medical Center</a><span class="res-tag">24/7</span></p>
-    <p class="res-meta">601 Vernon L. Tharp St, Columbus &bull; (614) 292-3551 &bull; Teaching hospital with the deepest specialist bench in the region</p>
-  </div>
-  <div class="res-item">
-    <p class="res-name"><a href="https://www.medvet.com/location/hilliard/" rel="noopener">MedVet Hilliard</a><span class="res-tag">24/7</span></p>
-    <p class="res-meta">5230 Renner Rd, Columbus &bull; Same MedVet network, west side</p>
-  </div>
-  <div class="res-item">
-    <p class="res-name"><a href="https://covevets.com/" rel="noopener">Central Ohio Veterinary Emergency (COVE)</a><span class="res-tag">24/7</span></p>
-    <p class="res-meta">585 Sunbury Rd, Delaware &bull; The closest ER for our northern neighbors</p>
-  </div>
-
-  <h2 id="insurance">Pet <em>Insurance.</em></h2>
-  <p class="section-note">A list of current pet insurance options with some details about each. I am not associated with any of them and receive no compensation for listing them here.</p>
-  <div class="res-item">
-    <p class="res-name"><a href="https://www.trupanion.com/" rel="noopener">Trupanion</a></p>
-    <p class="res-meta"><strong>Why it's here:</strong> the catastrophic-coverage standard - 90% coverage with no payout caps, and at participating vets it pays the hospital directly at checkout, so you never front a five-figure bill.</p>
-    <p class="res-meta"><strong>The catch:</strong> the priciest on this list, with no wellness coverage. This is pure protection.</p>
-  </div>
-  <div class="res-item">
-    <p class="res-name"><a href="https://www.healthypawspetinsurance.com/" rel="noopener">Healthy Paws</a></p>
-    <p class="res-meta"><strong>Why it's here:</strong> one simple plan, unlimited payout options, and a reputation for fast, uncomplicated claims.</p>
-    <p class="res-meta"><strong>The catch:</strong> enrollment closes as pets age - this is a decision to make while yours is young.</p>
-  </div>
-  <div class="res-item">
-    <p class="res-name"><a href="https://www.embracepetinsurance.com/" rel="noopener">Embrace</a></p>
-    <p class="res-meta"><strong>Why it's here:</strong> the balanced pick - your deductible shrinks each claim-free year, and conditions cured for 12 months can come off the pre-existing list, which almost nobody else offers.</p>
-    <p class="res-meta"><strong>The catch:</strong> most tiers carry annual payout caps - choose the ceiling with real vet bills in mind.</p>
-  </div>
-  <div class="res-item">
-    <p class="res-name"><a href="https://www.lemonade.com/pet" rel="noopener">Lemonade</a></p>
-    <p class="res-meta"><strong>Why it's here:</strong> the budget pick - among the cheapest premiums, app-based claims often paid in minutes, and leftover premiums go to charity.</p>
-    <p class="res-meta"><strong>The catch:</strong> the cheap tiers cap payouts at $5,000-$10,000 a year, which one serious illness can blow through. Buy the high ceiling or look elsewhere.</p>
-  </div>
-  <p class="section-note" style="margin-top:14px">Still deciding? <a href="https://www.petinsurancereview.com/" rel="noopener">Pet Insurance Review</a> aggregates over 200,000 verified owner reviews with side-by-side quotes.</p>
 
   <h2 id="shop">Shop <em>Local.</em></h2>
   <p class="section-note">The big-box stores are fine. These keep your money in Central Ohio - homegrown shops where the staff know the products because they use them, covering everything from everyday food to gear, treats, and the odd critter.</p>
@@ -190,16 +115,6 @@
   <h2 id="license">License Your <em>Dog.</em></h2>
   <p class="section-note">Ohio law requires every dog over three months to carry a current county license, renewed annually. It costs less than a bag of good treats, funds the county shelter, and it's the fastest way home if your dog ever gets lost. <a href="https://www.franklincountyohio.gov/Resident-Services/Dogs" rel="noopener">Get or renew a Franklin County dog license &rarr;</a></p>
 
-  <h2 id="lost">If a Pet Goes <em>Missing.</em></h2>
-  <p class="section-note">Move fast, stay methodical, and work this list in order:</p>
-  <ol class="lost-list">
-    <li><strong>Call the county shelter.</strong> Found dogs are brought to the <a href="https://www.franklincountyohio.gov/Resident-Services/Dogs" rel="noopener">Franklin County Dog Shelter</a> - call (614) 525-3647 and check their stray listings. For cats, check with <a href="https://www.columbushumane.org/" rel="noopener">Columbus Humane</a>.</li>
-    <li><strong>File a free report on <a href="https://petfbi.org/" rel="noopener">Pet FBI</a>.</strong> The original lost-and-found pet database on the internet, founded right here in Columbus in 1998 - now nationwide, volunteer-run, and always free.</li>
-    <li><strong>Post a photo to <a href="https://lost.petcolove.org/" rel="noopener">Petco Love Lost</a>.</strong> Its photo-matching scans found-pet reports across the country.</li>
-    <li><strong>Post to Nextdoor and your neighborhood Facebook groups.</strong> Most lost pets are found by a neighbor within a mile of home.</li>
-  </ol>
-  <p class="section-note">And tonight, before any of this is ever needed: make sure your pet's microchip registration has your current phone number.</p>
-
 </main>
 
 <footer>
@@ -210,6 +125,7 @@
     <a href="process.html">Our Process</a> &nbsp;&bull;&nbsp;
     <a href="faq.html">FAQ</a> &nbsp;&bull;&nbsp;
     <a href="adopt.html">Adopt Local</a> &nbsp;&bull;&nbsp;
+    <a href="emergency.html">Emergencies</a> &nbsp;&bull;&nbsp;
     <a href="terms.html">Terms of Service</a> &nbsp;&bull;&nbsp;
     <a href="privacy.html">Privacy Policy</a>
   </p>
