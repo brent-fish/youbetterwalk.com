@@ -48,7 +48,14 @@
     h1 em{font-style:italic;color:var(--red)}
     .intro{font-weight:300;color:var(--warm-gray);font-size:19px;margin-bottom:14px}
     .reviewed{font-size:14px;color:var(--warm-gray);font-weight:400;padding-bottom:36px;margin-bottom:44px;border-bottom:1px solid var(--cream-dark)}
-    h2{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--charcoal);margin:52px 0 6px}
+    h2{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--charcoal);margin:52px 0 6px;scroll-margin-top:calc(var(--nav-h) + 20px)}
+    .anchor-nav{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 12px}
+    .anchor-nav a{
+      font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+      color:var(--charcoal);background:var(--white);border:1px solid var(--cream-dark);
+      border-radius:999px;padding:7px 16px;transition:color 0.2s,border-color 0.2s;
+    }
+    .anchor-nav a:hover{color:var(--red);border-color:var(--red);text-decoration:none}
     h2 em{font-style:italic;color:var(--red)}
     .section-note{font-size:16px;font-weight:300;color:var(--warm-gray);margin-bottom:18px}
     .res-item{padding:16px 0;border-bottom:1px solid var(--cream-dark)}
@@ -95,20 +102,30 @@
   <h1>The Central Ohio <em>Pet Guide.</em></h1>
   <p class="reviewed">Reviewed and updated September 2026. Spot something out of date? <a href="index.html#contact">Tell us</a> and we'll fix it.</p>
 
+  <nav class="anchor-nav" aria-label="Page sections">
+    <a href="adopt.html">Adoption</a>
+    <a href="#emergency">Emergency Numbers</a>
+    <a href="#vets">Emergency Vets</a>
+    <a href="#insurance">Insurance</a>
+    <a href="#shop">Shop Local</a>
+    <a href="#license">Licensing</a>
+    <a href="#lost">Lost Pets</a>
+  </nav>
+
   <h2>Adopt <em>Local.</em></h2>
   <div class="hub-card">
     <p>Steve came from a shelter. Your next best friend (or boss) is waiting in one too. We keep a full guide to Central Ohio's shelters and rescues, for dog people and cat people alike.</p>
     <p class="hub-cta"><a href="adopt.html">Browse the adoption guide &rarr;</a></p>
   </div>
 
-  <h2>In an <em>Emergency.</em></h2>
+  <h2 id="emergency">In an <em>Emergency.</em></h2>
   <p class="section-note">Save these before you need them. Both poison hotlines are staffed 24/7 by veterinary toxicologists; a consultation fee applies, and it's the best money you'll ever resent spending.</p>
   <div class="emergency-box">
     <p><strong>ASPCA Animal Poison Control</strong> &nbsp;<span class="big-num">(888)&nbsp;426-4435</span></p>
     <p><strong>Pet Poison Helpline</strong> &nbsp;<span class="big-num">(855)&nbsp;764-7661</span></p>
   </div>
 
-  <h2>Emergency &amp; Specialty <em>Vets.</em></h2>
+  <h2 id="vets">Emergency &amp; Specialty <em>Vets.</em></h2>
   <p class="section-note">A note on how we chose: emergency hospitals earn brutal online reviews by nature - people rate them on the worst day of their lives. So we don't rank them by stars. Every hospital here is open 24/7/365 with emergency clinicians on site. Know the one nearest you before you need it.</p>
   <div class="res-item">
     <p class="res-name"><a href="https://www.medvet.com/location/columbus/" rel="noopener">MedVet Columbus</a><span class="res-tag">24/7</span></p>
@@ -131,7 +148,7 @@
     <p class="res-meta">585 Sunbury Rd, Delaware &bull; The closest ER for our northern neighbors</p>
   </div>
 
-  <h2>Pet <em>Insurance.</em></h2>
+  <h2 id="insurance">Pet <em>Insurance.</em></h2>
   <p class="section-note">A list of current pet insurance options with some details about each. I am not associated with any of them and receive no compensation for listing them here.</p>
   <div class="res-item">
     <p class="res-name"><a href="https://www.trupanion.com/" rel="noopener">Trupanion</a></p>
@@ -155,7 +172,7 @@
   </div>
   <p class="section-note" style="margin-top:14px">Still deciding? <a href="https://www.petinsurancereview.com/" rel="noopener">Pet Insurance Review</a> aggregates over 200,000 verified owner reviews with side-by-side quotes.</p>
 
-  <h2>Shop <em>Local.</em></h2>
+  <h2 id="shop">Shop <em>Local.</em></h2>
   <p class="section-note">The big-box stores are fine. These keep your money in Central Ohio - homegrown shops where the staff know the products because they use them, covering everything from everyday food to gear, treats, and the odd critter.</p>
   <div class="res-item">
     <p class="res-name"><a href="https://www.muttsandco.com/" rel="noopener">Mutts &amp; Co.</a></p>
@@ -170,10 +187,10 @@
     <p class="res-meta">2830 Fishinger Rd, Upper Arlington, and stores all over town &bull; An honorable mention with an asterisk: these were PetPeople, born right here in Columbus in the '90s, until Memphis-based Hollywood Feed bought the hometown chain in 2022. The ownership left town; the stores, the staff, and the healthy-food focus stayed.</p>
   </div>
 
-  <h2>License Your <em>Dog.</em></h2>
+  <h2 id="license">License Your <em>Dog.</em></h2>
   <p class="section-note">Ohio law requires every dog over three months to carry a current county license, renewed annually. It costs less than a bag of good treats, funds the county shelter, and it's the fastest way home if your dog ever gets lost. <a href="https://www.franklincountyohio.gov/Resident-Services/Dogs" rel="noopener">Get or renew a Franklin County dog license &rarr;</a></p>
 
-  <h2>If a Pet Goes <em>Missing.</em></h2>
+  <h2 id="lost">If a Pet Goes <em>Missing.</em></h2>
   <p class="section-note">Move fast, stay methodical, and work this list in order:</p>
   <ol class="lost-list">
     <li><strong>Call the county shelter.</strong> Found dogs are brought to the <a href="https://www.franklincountyohio.gov/Resident-Services/Dogs" rel="noopener">Franklin County Dog Shelter</a> - call (614) 525-3647 and check their stray listings. For cats, check with <a href="https://www.columbushumane.org/" rel="noopener">Columbus Humane</a>.</li>
