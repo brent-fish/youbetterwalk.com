@@ -132,26 +132,18 @@
       --charcoal:#261A1A;--warm-gray:#5C5050;--white:#FFFFFF;
       --serif:'Cormorant Garamond',Georgia,serif;
       --sans:'Jost',sans-serif;
-      --nav-h:80px;
+      --nav-h:196px;
     }
     body{background:var(--cream);color:var(--charcoal);font-family:var(--sans);font-size:18px;line-height:1.78;overflow-x:hidden}
     a{color:var(--red);text-decoration:none}
     a:hover{text-decoration:underline}
-    nav{
-      position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:300;
-      background:var(--white);border-bottom:1px solid #E8DFDA;
-      display:flex;align-items:center;justify-content:space-between;
-      padding:0 48px;
-    }
-    .nav-back{font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--charcoal);transition:color 0.2s}
-    .nav-back:hover{color:var(--red);text-decoration:none}
     main{max-width:840px;margin:0 auto;padding:calc(var(--nav-h) + 72px) 32px 96px}
     .page-eyebrow{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--red);margin-bottom:18px}
     h1{font-family:var(--serif);font-size:clamp(40px,5vw,62px);font-weight:700;line-height:1.05;margin-bottom:18px;color:var(--charcoal)}
     h1 em{font-style:italic;color:var(--red)}
     .intro{font-weight:300;color:var(--warm-gray);font-size:19px;margin-bottom:14px}
     .reviewed{font-size:14px;color:var(--warm-gray);font-weight:400;padding-bottom:36px;margin-bottom:44px;border-bottom:1px solid var(--cream-dark)}
-    h2{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--charcoal);margin:52px 0 6px;scroll-margin-top:calc(var(--nav-h) + 20px)}
+    h2{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--charcoal);margin:52px 0 6px;scroll-margin-top:calc(var(--nav-small) + 20px)}
     h2 em{font-style:italic;color:var(--red)}
     .section-note{font-size:16px;font-weight:300;color:var(--warm-gray);margin-bottom:18px}
     .res-item{padding:16px 0;border-bottom:1px solid var(--cream-dark)}
@@ -165,26 +157,147 @@
     }
     .hub-card p{font-weight:300;color:var(--warm-gray);margin-bottom:12px}
     .hub-cta{font-weight:600;letter-spacing:0.06em}
-    footer{background:var(--charcoal);color:rgba(255,255,255,.55);font-family:var(--sans);font-size:14px;padding:48px;text-align:center;line-height:2}
-    footer p{color:rgba(255,255,255,.55)}
-    footer a{color:rgba(255,255,255,.7)}
     main p:not(.res-name) a,.lost-list a{text-decoration:underline;text-underline-offset:2px}
-    footer a:hover{color:var(--white)}
-    .footer-brand{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--white);margin-bottom:8px}
-    .footer-brand em{font-style:italic;color:var(--red-on-dark)}
     @media(max-width:600px){nav{padding:0 20px}main{padding:calc(var(--nav-h) + 48px) 20px 72px}}
     @media (prefers-reduced-motion: reduce){
       *,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
     }
       @media(max-width:768px){.intro,.section-note,.res-meta,.hub-card p{font-weight:400}}
+    /* NAV */
+    nav{
+      position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:300;
+      background:var(--white);border-bottom:1px solid #E8DFDA;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 60px;
+    }
+    .nav-logo img{height:160px;width:auto;display:block}
+    .nav-links{display:flex;align-items:center;gap:44px;list-style:none}
+    .nav-links a{
+      font-family:var(--sans);font-size:16px;font-weight:500;
+      letter-spacing:0.12em;text-transform:uppercase;color:var(--charcoal);
+      position:relative;transition:color 0.2s;
+    }
+    .nav-links a::after{
+      content:'';position:absolute;bottom:-3px;left:0;right:0;
+      height:1.5px;background:var(--red);transform:scaleX(0);transition:transform 0.2s;
+    }
+    .nav-links a:hover{color:var(--red);text-decoration:none}
+    .nav-links a:hover::after{transform:scaleX(1)}
+    .nav-cta{
+      background:var(--red)!important;color:var(--white)!important;
+      padding:13px 28px;border-radius:6px;font-size:15px!important;font-weight:600!important;
+      letter-spacing:0.15em;text-transform:uppercase;transition:background 0.2s,transform 0.15s;
+    }
+    .nav-cta::after{display:none!important}
+    .nav-cta:hover{background:var(--red-hover)!important;transform:translateY(-1px);text-decoration:none!important}
+    .nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+    .nav-burger span{display:block;width:26px;height:2px;background:var(--charcoal);border-radius:2px;transition:transform 0.2s}
+    .nav-drawer{
+      display:none;position:fixed;top:0;right:0;bottom:0;width:280px;
+      background:var(--white);z-index:350;padding:32px 28px;
+      transform:translateX(100%);transition:transform 0.3s;flex-direction:column;
+    }
+    .nav-drawer.open{transform:translateX(0)}
+    .nav-drawer ul{list-style:none;display:flex;flex-direction:column;gap:0;flex:1}
+    .nav-drawer ul li a{
+      display:block;font-family:var(--sans);font-size:18px;font-weight:500;
+      letter-spacing:0.1em;text-transform:uppercase;color:var(--charcoal);
+      padding:18px 0;border-bottom:1px solid var(--cream-dark);transition:color 0.2s;
+    }
+    .nav-drawer ul li a:hover{color:var(--red);text-decoration:none}
+    .nav-drawer ul li:last-child a{
+      margin-top:32px;background:var(--red);color:var(--white);
+      padding:16px 24px;border-radius:6px;text-align:center;border:none;
+    }
+    .nav-drawer ul li:last-child a:hover{background:var(--red-hover)}
+    .drawer-close{
+      align-self:flex-end;background:none;border:none;cursor:pointer;
+      font-size:28px;line-height:1;color:var(--charcoal);margin-bottom:24px;
+    }
+
+    /* FOOTER */
+    footer{
+      background:var(--charcoal);color:rgba(255,255,255,.55);
+      font-family:var(--sans);font-size:14px;
+      padding:56px 60px 40px;
+    }
+    .footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:48px;margin-bottom:40px;flex-wrap:wrap}
+    .footer-brand{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--white);margin-bottom:6px}
+    .footer-brand em{color:var(--red-on-dark);font-style:italic}
+    .footer-tagline{font-size:14px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,.47);margin-bottom:10px}
+    .footer-contact-line a{color:rgba(255,255,255,.55)}
+    .footer-contact-line a:hover{color:var(--white)}
+    .footer-links{list-style:none;display:flex;flex-direction:column;gap:10px;text-align:right}
+    .footer-links a{color:rgba(255,255,255,.55);transition:color 0.2s}
+    .footer-links a:hover{color:var(--white);text-decoration:none}
+    .footer-social{display:flex;gap:4px;list-style:none;margin:18px 0 0 -12px;padding:0;flex-wrap:wrap}
+    .footer-social a{
+      display:inline-flex;align-items:center;gap:8px;
+      min-height:44px;padding:0 12px;
+      font-family:var(--sans);font-size:15px;font-weight:400;letter-spacing:0.06em;
+      color:rgba(255,255,255,.55);transition:color 0.2s;text-decoration:none;
+    }
+    .footer-social a:hover{color:var(--white)}
+    .footer-social svg{width:19px;height:19px;flex:none}
+    .footer-copy{font-size:13px;color:rgba(255,255,255,.47);border-top:1px solid rgba(255,255,255,.08);padding-top:24px}
+
+
+    @media(max-width:900px){
+      :root{--nav-h:80px}
+      nav{padding:0 20px;height:var(--nav-h)}
+      .nav-logo img{height:56px}
+      .nav-links{display:none}
+      .nav-burger{display:flex}
+      .nav-drawer{display:flex}
+      footer{padding:48px 24px 32px}
+      .footer-top{flex-direction:column;gap:32px}
+      .footer-links{text-align:left}
+    }
+    @media(max-width:768px){
+      .footer-contact-line a,.footer-contact-line .fc-loc{display:block}
+      .fc-sep{display:none}
+      .footer-tagline{letter-spacing:0.06em}
+      .footer-social{display:grid;grid-template-columns:1fr 1fr;gap:0}
+    }
+    :root{--nav-small:96px}
+    nav:not(.nav-drawer),.nav-logo img{transition:height .2s ease,box-shadow .2s ease}
+    @media(min-width:901px){
+      nav.nav-compact{height:var(--nav-small)}
+      nav.nav-compact .nav-logo img{height:76px}
+    }
+    @media(max-width:900px){:root{--nav-small:80px}}
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-brand"><picture style="display:contents"><source srcset="images/youbetterwalkheader-still.webp" media="(prefers-reduced-motion: reduce)"/><source srcset="images/youbetterwalkheader.avif" type="image/avif"/><img src="images/youbetterwalkheader.webp" alt="You Better Walk" width="298" height="136" style="height:52px;width:auto;display:block;"/></picture></a>
-  <a href="index.html" class="nav-back">&larr; Back to Site</a>
+  <div class="nav-logo">
+    <a href="index.html"><picture style="display:contents"><source srcset="images/youbetterwalkheader-still.webp" media="(prefers-reduced-motion: reduce)"/><source srcset="images/youbetterwalkheader.avif" type="image/avif"/><img src="images/youbetterwalkheader.webp" alt="You Better Walk" width="298" height="136"/></picture></a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#values">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#team">Team</a></li>
+    <li><a href="process.html">Process</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Get in Touch</a></li>
+  </ul>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="nav-drawer" id="navDrawer">
+  <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
+  <ul>
+    <li><a href="index.html#values">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#team">Team</a></li>
+    <li><a href="process.html">Process</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="index.html#contact">Get in Touch</a></li>
+  </ul>
+</div>
 
 <main>
   <p class="page-eyebrow">Community Resources</p>
@@ -224,21 +337,58 @@
 </main>
 
 <footer>
-  <p class="footer-brand">You <em>Better</em> Walk</p>
-  <p>Walking &nbsp;&bull;&nbsp; Pet Sitting &nbsp;&bull;&nbsp; Done with Love</p>
-  <p style="margin-top:16px">
-    <a href="index.html">Home</a> &nbsp;&bull;&nbsp;
-    <a href="process.html">Our Process</a> &nbsp;&bull;&nbsp;
-    <a href="faq.html">FAQ</a> &nbsp;&bull;&nbsp;
-    <a href="adopt.html">Adopt Local</a> &nbsp;&bull;&nbsp;
-    <a href="care.html">Health &amp; Safety</a> &nbsp;&bull;&nbsp;
-    <a href="terms.html">Terms of Service</a> &nbsp;&bull;&nbsp;
-    <a href="privacy.html">Privacy Policy</a>
-  </p>
-  <p style="margin-top:12px;font-size:13px;color:rgba(255,255,255,.47)">&copy; 2026 You Better Walk LLC &nbsp;&bull;&nbsp; Brent Fisher, Owner and Operator &nbsp;&bull;&nbsp; Ohio &nbsp;&bull;&nbsp; All Rights Reserved</p>
+  <div class="footer-top">
+    <div>
+      <p class="footer-brand">You <em>Better</em> Walk</p>
+      <p class="footer-tagline">Walking &nbsp;&bull;&nbsp; Pet Sitting &nbsp;&bull;&nbsp; Done with Love</p>
+      <p class="footer-contact-line">
+        <a href="mailto:youbetterwalkllc@gmail.com">youbetterwalkllc@gmail.com</a>
+        <span class="fc-sep">&nbsp;&nbsp;|&nbsp;&nbsp;</span> <a href="tel:+16146410350">(614) 641-0350</a>
+        <span class="fc-sep">&nbsp;&nbsp;|&nbsp;&nbsp;</span> <span class="fc-loc">Upper Arlington, Columbus, Ohio</span>
+      </p>
+      <ul class="footer-social">
+        <li><a href="https://www.instagram.com/youbetterwalkllc/" rel="noopener" aria-label="You Better Walk on Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>Instagram</a></li>
+        <li><a href="https://maps.app.goo.gl/LVExsaGWeaBKyjWD9" rel="noopener" aria-label="You Better Walk on Google">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>Google</a></li>
+        <li><a href="https://nextdoor.com/page/you-better-walk-columbus-oh" rel="noopener" aria-label="You Better Walk on Nextdoor">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 11.2 12 4l9 7.2"/><path d="M5.5 9.6V20h13V9.6"/><path d="M10 20v-5h4v5"/></svg>Nextdoor</a></li>
+        <li><a href="https://www.venmo.com/u/youbetterwalk" rel="noopener" aria-label="Pay You Better Walk on Venmo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6.5 5l5.5 14L17.5 5"/></svg>Venmo</a></li>
+      </ul>
+    </div>
+    <ul class="footer-links">
+      <li><a href="index.html#values">About</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#team">Team</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="process.html">Our Process</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="columbus-dog-walker.html">Columbus Dog Walker</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="adopt.html">Adopt Local</a></li>
+      <li><a href="care.html">Health &amp; Safety</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="terms.html">Terms of Service</a></li>
+    </ul>
+  </div>
+  <p class="footer-copy">&copy; 2026 You Better Walk LLC &nbsp;&bull;&nbsp; Brent Fisher, Owner and Operator &nbsp;&bull;&nbsp; Ohio &nbsp;&bull;&nbsp; All Rights Reserved</p>
 </footer>
 
 <script>
+  (function(){
+    var n=document.querySelector('nav:not(.nav-drawer)');
+    function s(){n.classList.toggle('nav-compact',window.scrollY>100)}
+    window.addEventListener('scroll',s,{passive:true});s();
+  })();
+  const burger  = document.getElementById('navBurger');
+  const drawer  = document.getElementById('navDrawer');
+  const closer  = document.getElementById('drawerClose');
+  function openDrawer()  { drawer.classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeDrawer() { drawer.classList.remove('open'); document.body.style.overflow=''; }
+  burger.addEventListener('click', () => drawer.classList.contains('open') ? closeDrawer() : openDrawer());
+  closer.addEventListener('click', closeDrawer);
+  document.querySelectorAll('.nav-drawer a').forEach(l => l.addEventListener('click', closeDrawer));
   document.addEventListener('click', function(e){
     var a = e.target.closest ? e.target.closest('a[href]') : null;
     if (!a || typeof gtag !== 'function') return;

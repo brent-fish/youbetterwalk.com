@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>You Better Walk | Dog Walking &amp; Pet Sitting | Upper Arlington, Columbus, Ohio</title>
-  <meta name="description" content="Private dog walking and in-home pet sitting in Upper Arlington, Grandview Heights, and Marble Cliff. No pack walks, and the same familiar face every visit."/>
+  <title>Dog Walking &amp; Pet Sitting in Upper Arlington, OH | You Better Walk</title>
+  <meta name="description" content="Private dog walking and pet sitting in Upper Arlington, Grandview Heights, Marble Cliff, Clintonville, and Worthington. The same familiar face every visit."/>
   <meta name="theme-color" content="#FAF6F0"/>
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://youbetterwalk.com/"/>
@@ -14,16 +14,16 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
   <link rel="manifest" href="/images/site.webmanifest"/>
   <meta property="og:type" content="website"/>
-  <meta property="og:title" content="You Better Walk | Dog Walking &amp; Pet Sitting | Upper Arlington, Ohio"/>
-  <meta property="og:description" content="Private dog walking and in-home pet sitting in Upper Arlington, Grandview Heights, and Marble Cliff. One dog. One walk. Every time."/>
+  <meta property="og:title" content="Dog Walking &amp; Pet Sitting in Upper Arlington, OH | You Better Walk"/>
+  <meta property="og:description" content="Private dog walking and pet sitting in Upper Arlington, Grandview Heights, Marble Cliff, Clintonville, and Worthington. The same familiar face every visit."/>
   <meta property="og:url" content="https://youbetterwalk.com/"/>
   <meta property="og:site_name" content="You Better Walk"/>
   <meta property="og:image" content="https://youbetterwalk.com/images/og-share.jpg"/>
   <meta property="og:image:width" content="1600"/>
   <meta property="og:image:height" content="900"/>
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="You Better Walk | Dog Walking &amp; Pet Sitting | Upper Arlington, Ohio"/>
-  <meta name="twitter:description" content="Private dog walking and in-home pet sitting in Upper Arlington, Grandview Heights, and Marble Cliff. One dog. One walk. Every time."/>
+  <meta name="twitter:title" content="Dog Walking &amp; Pet Sitting in Upper Arlington, OH | You Better Walk"/>
+  <meta name="twitter:description" content="Private dog walking and pet sitting in Upper Arlington, Grandview Heights, Marble Cliff, Clintonville, and Worthington. The same familiar face every visit."/>
   <meta name="twitter:image" content="https://youbetterwalk.com/images/og-share.jpg"/>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6L1L4PWZ5"></script>
@@ -93,7 +93,7 @@
       --sans:'Jost',sans-serif;
       --nav-h:196px;
     }
-    html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+    html{scroll-behavior:smooth;scroll-padding-top:var(--nav-small)}
     body{background:var(--cream);color:var(--charcoal);font-family:var(--sans);font-size:18px;line-height:1.78;overflow-x:hidden}
     img{max-width:100%;display:block}
     a{color:inherit;text-decoration:none}
@@ -614,6 +614,13 @@
       .footer-tagline{letter-spacing:0.06em}
       .footer-social{display:grid;grid-template-columns:1fr 1fr;gap:0}
     }
+    :root{--nav-small:96px}
+    nav:not(.nav-drawer),.nav-logo img{transition:height .2s ease,box-shadow .2s ease}
+    @media(min-width:901px){
+      nav.nav-compact{height:var(--nav-small)}
+      nav.nav-compact .nav-logo img{height:76px}
+    }
+    @media(max-width:900px){:root{--nav-small:80px}}
 </style>
 </head>
 <body>
@@ -1053,6 +1060,11 @@
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20), {passive:true});
 
+  (function(){
+    var n=document.querySelector('nav:not(.nav-drawer)');
+    function s(){n.classList.toggle('nav-compact',window.scrollY>100)}
+    window.addEventListener('scroll',s,{passive:true});s();
+  })();
   const burger  = document.getElementById('navBurger');
   const drawer  = document.getElementById('navDrawer');
   const overlay = document.getElementById('navOverlay');
