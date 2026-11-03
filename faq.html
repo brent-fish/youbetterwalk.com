@@ -230,7 +230,7 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
       --cream:#FAF6F0;--cream-mid:#F0E8DC;--cream-dark:#DFD1BE;
-      --red:#8B1A1A;--red-hover:#A52020;
+      --red:#8B1A1A;--red-hover:#A52020;--red-on-dark:#C92626;
       --charcoal:#261A1A;--warm-gray:#5C5050;--white:#FFFFFF;
       --serif:'Cormorant Garamond',Georgia,serif;
       --sans:'Jost',sans-serif;
@@ -369,12 +369,12 @@
     .faq-cta{
       background:var(--charcoal);padding:80px 60px;text-align:center;
     }
-    .faq-cta .page-eyebrow{color:rgba(255,255,255,.45)}
+    .faq-cta .page-eyebrow{color:rgba(255,255,255,.47)}
     .faq-cta h2{
       font-family:var(--serif);font-size:clamp(38px,4.5vw,64px);
       font-weight:700;color:var(--white);margin-bottom:20px;line-height:1.05;
     }
-    .faq-cta h2 em{font-style:italic;color:var(--red)}
+    .faq-cta h2 em{font-style:italic;color:var(--red-on-dark)}
     .faq-cta p{
       font-family:var(--sans);font-size:19px;font-weight:300;
       color:rgba(255,255,255,.65);max-width:520px;margin:0 auto 40px;line-height:1.8;
@@ -395,8 +395,8 @@
     }
     .footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:48px;margin-bottom:40px;flex-wrap:wrap}
     .footer-brand{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--white);margin-bottom:6px}
-    .footer-brand em{color:var(--red);font-style:italic}
-    .footer-tagline{font-size:14px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:10px}
+    .footer-brand em{color:var(--red-on-dark);font-style:italic}
+    .footer-tagline{font-size:14px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,.47);margin-bottom:10px}
     .footer-contact-line a{color:rgba(255,255,255,.55)}
     .footer-contact-line a:hover{color:var(--white)}
     .footer-links{list-style:none;display:flex;flex-direction:column;gap:10px;text-align:right}
@@ -411,7 +411,7 @@
     }
     .footer-social a:hover{color:var(--white)}
     .footer-social svg{width:19px;height:19px;flex:none}
-    .footer-copy{font-size:13px;color:rgba(255,255,255,.25);border-top:1px solid rgba(255,255,255,.08);padding-top:24px}
+    .footer-copy{font-size:13px;color:rgba(255,255,255,.47);border-top:1px solid rgba(255,255,255,.08);padding-top:24px}
 
     /* MOBILE */
     @media(max-width:900px){
@@ -439,7 +439,7 @@
 
 <nav>
   <div class="nav-logo">
-    <a href="index.html"><img src="images/youbetterwalkheader.webp" alt="You Better Walk" width="298" height="136"/></a>
+    <a href="index.html"><picture style="display:contents"><source srcset="images/youbetterwalkheader-still.webp" media="(prefers-reduced-motion: reduce)"/><source srcset="images/youbetterwalkheader.avif" type="image/avif"/><img src="images/youbetterwalkheader.webp" alt="You Better Walk" width="298" height="136"/></picture></a>
   </div>
   <ul class="nav-links">
     <li><a href="index.html#values">About</a></li>
