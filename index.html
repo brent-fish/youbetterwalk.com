@@ -445,7 +445,7 @@
       outline:none;transition:border-color 0.2s;-webkit-appearance:none;
     }
     .form-input:focus{border-color:var(--red)}
-    .form-input::placeholder{color:#C8BAAE}
+    .form-input::placeholder{color:#7A6C62}
     textarea.form-input{resize:vertical;min-height:116px}
     .form-submit{
       width:100%;padding:16px;background:var(--red);color:var(--white);border:none;border-radius:6px;
@@ -495,6 +495,35 @@
 
 
     /* ── TABLET ──────────────────────────────────── */
+    .hero{position:relative}
+    .trust-strip{position:absolute;top:var(--nav-h);left:0;right:0;z-index:5;background:var(--charcoal);color:var(--white);text-align:center;font-size:15px;font-weight:500;letter-spacing:0.04em;line-height:1.4;padding:9px 16px}
+    .hero-proof{margin-top:30px;opacity:0;animation:fadeUp 0.65s 0.75s ease forwards}
+    .hero-proof-line{font-size:17px;font-weight:500;line-height:1.55;color:var(--charcoal);margin-bottom:6px}
+    .hero-proof-area{font-size:16px;font-weight:400;line-height:1.55;color:var(--warm-gray);margin-bottom:6px}
+    .hero-proof a{color:var(--red);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+    .reviews-band{background:var(--cream-mid);padding:72px 52px}
+    .reviews-inner{max-width:1180px;margin:0 auto}
+    .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:28px}
+    .review-card{background:var(--white);border-radius:8px;padding:28px}
+    .review-stars{color:var(--red);font-size:17px;letter-spacing:0.12em;margin-bottom:12px}
+    .review-quote{font-size:18px;font-weight:400;line-height:1.6;color:var(--charcoal);margin-bottom:14px}
+    .review-name{font-size:15px;font-weight:600;color:var(--warm-gray)}
+    .reviews-link{margin-top:24px;font-size:17px}
+    .reviews-link a{color:var(--red);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+    .weekday-band{background:var(--white);border-left:3px solid var(--red);border-radius:0 6px 6px 0;padding:22px 28px;margin:0 0 32px;font-size:19px;line-height:1.6;color:var(--charcoal)}
+    .service-note{font-size:15px;line-height:1.55;color:var(--warm-gray);margin:-6px 0 14px}
+    .mobile-contact{display:none}
+    @media(max-width:900px){.reviews-grid{grid-template-columns:1fr}.reviews-band{padding:52px 24px}}
+    @media(max-width:768px){
+      .hero-proof-line{font-size:16px}
+      .hero .hero-text{padding-top:84px}
+      .trust-strip{font-size:14px}
+      .mobile-contact{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:250;background:var(--white);border-top:1px solid #E8DFDA;padding:10px 14px;gap:10px}
+      .mobile-contact a{flex:1;text-align:center;padding:12px 8px;border-radius:6px;font-size:16px;font-weight:600}
+      .mobile-contact .mc-text{background:var(--red);color:var(--white)}
+      .mobile-contact .mc-form{border:1px solid var(--red);color:var(--red)}
+      body{padding-bottom:68px}
+    }
     @media(max-width:1024px){
       .values-grid{grid-template-columns:1fr 1fr;gap:32px}
       .services-grid{grid-template-columns:1fr 1fr;gap:20px}
@@ -595,6 +624,7 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
+  <div class="trust-strip">Insured &bull; Background checked &bull; First aid &amp; CPR &bull; NAPPS member</div>
   <div class="hero-text">
     <p class="hero-eyebrow">Pet Sitting & Walking for Everyone</p>
     <h1 class="hero-headline">A walk is<br><em>more than</em><br>just a walk.</h1>
@@ -606,6 +636,11 @@
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">Get in Touch</a>
       <a href="#team" class="btn-ghost">Meet Brent &amp; Steve &rarr;</a>
+    </div>
+    <div class="hero-proof">
+      <p class="hero-proof-area">Upper Arlington, Grandview Heights, Marble Cliff, Clintonville &amp; Worthington</p>
+      <p class="hero-proof-line">Walks from $23 &bull; Visits from $26 &bull; Overnights $75</p>
+      <p class="hero-proof-line">Rather text? <a href="sms:+16146410350">(614) 641-0350</a></p>
     </div>
   </div>
   <div class="hero-photo-side">
@@ -647,6 +682,32 @@
   </div>
 </div>
 
+<!-- REVIEWS -->
+<section class="reviews-band" aria-labelledby="reviews-heading">
+  <div class="reviews-inner">
+    <p class="section-eyebrow">From Our Clients</p>
+    <h2 class="section-headline" id="reviews-heading">What pet families <em>say.</em></h2>
+    <div class="reviews-grid">
+      <figure class="review-card">
+        <p class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+        <blockquote class="review-quote">"My dog, Yoda, loves him! He spends time with him and has developed a good trust with him. I get sent daily updates of how Yoda is doing accompanied with pics of him living his best life."</blockquote>
+        <figcaption class="review-name">Vik S., Google review</figcaption>
+      </figure>
+      <figure class="review-card">
+        <p class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+        <blockquote class="review-quote">"My schedule constantly changes so I can't walk them regularly and it's a relief knowing they're getting outside with someone they love."</blockquote>
+        <figcaption class="review-name">Tim N., Google review</figcaption>
+      </figure>
+      <figure class="review-card">
+        <p class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+        <blockquote class="review-quote">"Brent watched my super shy and anxious dog and did amazing with her... She had a harder time around men but was cuddled up on Brent within the first day!"</blockquote>
+        <figcaption class="review-name">Brenna F., house sitting client</figcaption>
+      </figure>
+    </div>
+    <p class="reviews-link"><a href="https://maps.app.goo.gl/LVExsaGWeaBKyjWD9" rel="noopener">Read our reviews on Google</a></p>
+  </div>
+</section>
+
 <!-- VALUES -->
 <section class="values" id="values">
   <div class="values-header reveal">
@@ -678,7 +739,7 @@
   <div class="policy-callout reveal">
     <p class="policy-eyebrow">Our Walking Policy</p>
     <h3 class="policy-headline">One dog. One walk. Every time.</h3>
-    <p class="policy-body">Every walk we provide is a private, dedicated session for your dog. No distractions or divided attention. In multi-dog households, each dog walks individually. This is not a limitation but by design. Your dog gets the undivided focus, safety, and care they deserve. Every single time. If you prefer back-to-back walks in a multiple-dog house, we are happy to offer a discount.</p>
+    <p class="policy-body">Every walk we provide is a private, dedicated session for your dog. No distractions or divided attention. In multi-dog households, each dog walks individually. We built it that way on purpose. Your dog gets the undivided focus, safety, and care they deserve. Every single time. If you prefer back-to-back walks in a multiple-dog house, we are happy to offer a discount.</p>
   </div>
 
 </section>
@@ -688,19 +749,20 @@
   <div class="services-top">
     <div class="reveal">
       <p class="section-eyebrow" style="font-size:17px">What We Offer</p>
-      <h2 class="section-headline" style="font-size:clamp(52px,5vw,76px)">Services &amp;<br><em>Packages.</em></h2>
+      <h2 class="section-headline" style="font-size:clamp(52px,5vw,76px)">Services &amp;<br><em>Pricing.</em></h2>
       <div class="divider"></div>
     </div>
     <div class="reveal reveal-d1">
       <p class="services-note">Serving the pets and families of <strong>Upper Arlington, Grandview Heights,</strong> and <strong>Marble Cliff</strong>, with extended service to <strong>Clintonville</strong> and <strong>Worthington</strong>. <span style="font-weight:200;color:var(--warm-gray)">Extended-area visits carry a small travel fee, waived for recurring weekly clients. Additional areas considered upon request. New clients begin with a free meet and greet; once you're with us, we ask for 48 hours' notice on new bookings.</span></p>
     </div>
   </div>
+  <p class="weekday-band"><strong>Need someone during the workday?</strong> We keep regular weekday midday visits and walks for busy households. A visit covers food, water, potty breaks, and play. Add a 20-minute walk to any visit for $15.</p>
   <div class="services-grid">
     <div class="service-card reveal reveal-d1">
       <h3 class="service-name">Dog Walking</h3>
       <p class="service-price">From $23</p>
       <p class="service-tagline">Private solo walks, sized to your dog</p>
-      <p class="service-desc">Solo walks built around your dog's pace and personality. A real walk, unhurried, with full attention and a visit report waiting for you when we're done.</p>
+      <p class="service-desc">Solo walks built around your dog's pace and personality. A real walk at your dog's pace, with full attention and a visit report waiting for you when we're done.</p>
       <ul class="service-menu">
         <li><span>20-minute potty break walk</span><span>$23</span></li>
         <li><span>30-minute walk</span><span>$30</span></li>
@@ -708,7 +770,7 @@
         <li><span>60-minute walk</span><span>$45</span></li>
       </ul>
       <ul class="service-includes">
-        <li>Brief visit report of anything noteworthy (behavior/health)</li>
+        <li>Visit report with a photo after every visit</li>
         <li>Free meet and greet before we start</li>
       </ul>
       <a href="#contact" class="service-cta">Inquire Now</a>
@@ -726,10 +788,11 @@
         <li><span>Add a 20-minute walk to any visit</span><span>$15</span></li>
         <li><span>Overnight stay<br><a href="faq.html#overnight" style="color:var(--red);font-weight:500;font-size:15px">(what's included?)</a></span><span>$75 / night</span></li>
       </ul>
+      <p class="service-note">Overnights run about 7pm to 7am. A full day with one 30-minute midday visit is $107.</p>
       <ul class="service-includes">
         <li>Feeding, fresh water, litter</li>
         <li>Enrichment and play time</li>
-        <li>Brief visit report of anything noteworthy (behavior/health)</li>
+        <li>Visit report with a photo after every visit</li>
         <li>Mail brought in, plants watered</li>
         <li>Free meet and greet before we start</li>
       </ul>
@@ -750,7 +813,7 @@
       <a href="#contact" class="service-cta">Inquire Now</a>
     </div>
   </div>
-  <p class="pricing-footnote" style="font-size:12px;font-weight:300;line-height:1.6;color:var(--warm-gray);text-align:center;margin-top:14px">* Pricing effective November 3, 2026. Existing clients keep the rates in their current service agreement.</p>
+  <p class="pricing-footnote" style="font-size:12px;font-weight:300;line-height:1.6;color:var(--warm-gray);text-align:center;margin-top:14px">* Existing clients keep the rates in their current service agreement.</p>
   <div class="services-addons reveal">
     <div>
       <p class="addons-title">Add-Ons</p>
@@ -1030,5 +1093,6 @@
     else if (h.indexOf('venmo.com') !== -1) gtag('event', 'venmo_click', { link_url: h });
   });
 </script>
+<div class="mobile-contact"><a class="mc-text" href="sms:+16146410350">Text Brent</a><a class="mc-form" href="#contact">Get in Touch</a></div>
 </body>
 </html>
