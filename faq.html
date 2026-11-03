@@ -168,7 +168,7 @@
         "name": "What does an overnight stay include?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "An overnight stay ($75 per night) covers roughly 7pm to 7am in your home: the evening routine, the night itself, and the morning routine. We also keep the house looking lived-in: mail and packages brought in, plants watered. Midday care during a multi-day stay - a lunchtime walk or afternoon drop-in - is booked alongside at regular rates. We map the whole schedule out together before you leave, so you know exactly what each day looks like and costs."
+          "text": "An overnight stay ($75 per night) covers roughly 7pm to 7am in your home: the evening routine, the night itself, and the morning routine, with a 20-minute walk for dogs each evening and each morning. We also keep the house looking lived-in: mail and packages brought in, plants watered. Midday care during a multi-day stay - a lunchtime walk or afternoon drop-in - is booked alongside at regular rates. We map the whole schedule out together before you leave, so you know exactly what each day looks like and costs."
         }
       },
       {
@@ -449,7 +449,15 @@
       *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}
       .reveal{opacity:1!important;transform:none!important}
     }
-  </style>
+      @media(max-width:768px){.hero-intro,.faq-answer,.faq-cta p{font-weight:400}}
+
+    @media(max-width:768px){
+      .footer-contact-line a,.footer-contact-line .fc-loc{display:block}
+      .fc-sep{display:none}
+      .footer-tagline{letter-spacing:0.06em}
+      .footer-social{display:grid;grid-template-columns:1fr 1fr;gap:0}
+    }
+</style>
 </head>
 <body>
 
@@ -733,7 +741,7 @@
     <details id="overnight">
       <summary>What does an overnight stay include?<span class="summary-icon"></span></summary>
       <div class="faq-answer">
-        <p>An overnight stay ($75 per night) covers roughly <strong>7pm to 7am</strong> in your home: the evening routine (dinner, potty breaks, play, settling in), the night itself, and the morning routine (breakfast, potty breaks, and a proper goodbye). Your pet keeps their bed, their smells, and their schedule - and someone is there with them through the night. And we keep it looking that way: mail and packages brought in, plants watered. House-watching, not housekeeping.</p>
+        <p>An overnight stay ($75 per night) covers roughly <strong>7pm to 7am</strong> in your home: the evening routine (dinner, a 20-minute walk for dogs, play, settling in), the night itself, and the morning routine (breakfast, another 20-minute walk, and a proper goodbye). Your pet keeps their bed, their smells, and their schedule - and someone is there with them through the night. And we keep it looking that way: mail and packages brought in, plants watered. House-watching, not housekeeping.</p>
         <p>Midday care during a multi-day stay - a lunchtime walk or afternoon drop-in - is booked alongside at regular rates, so a typical full day away runs the overnight plus whatever daytime visits your pet needs. An overnight with one 30-minute midday visit comes to $107. We'll map the whole schedule out together before you leave, so you know exactly what each day looks like and costs.</p>
       </div>
     </details>
@@ -791,7 +799,8 @@
       <p class="footer-tagline">Walking &nbsp;&bull;&nbsp; Pet Sitting &nbsp;&bull;&nbsp; Done with Love</p>
       <p class="footer-contact-line">
         <a href="mailto:youbetterwalkllc@gmail.com">youbetterwalkllc@gmail.com</a>
-        &nbsp;&nbsp;|&nbsp;&nbsp; Upper Arlington, Columbus, Ohio
+        <span class="fc-sep">&nbsp;&nbsp;|&nbsp;&nbsp;</span> <a href="tel:+16146410350">(614) 641-0350</a>
+        <span class="fc-sep">&nbsp;&nbsp;|&nbsp;&nbsp;</span> <span class="fc-loc">Upper Arlington, Columbus, Ohio</span>
       </p>
       <ul class="footer-social">
         <li><a href="https://www.instagram.com/youbetterwalkllc/" rel="noopener" aria-label="You Better Walk on Instagram">
@@ -811,6 +820,7 @@
       <li><a href="index.html#contact">Contact</a></li>
       <li><a href="process.html">Our Process</a></li>
       <li><a href="faq.html">FAQ</a></li>
+      <li><a href="columbus-dog-walker.html">Columbus Dog Walker</a></li>
       <li><a href="resources.html">Resources</a></li>
       <li><a href="privacy.html">Privacy Policy</a></li>
       <li><a href="terms.html">Terms of Service</a></li>

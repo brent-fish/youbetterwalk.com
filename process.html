@@ -263,7 +263,15 @@
       *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}
       .reveal{opacity:1!important;transform:none!important}
     }
-  </style>
+      @media(max-width:768px){.hero-intro,.step-text,.process-cta p{font-weight:400}}
+
+    @media(max-width:768px){
+      .footer-contact-line a,.footer-contact-line .fc-loc{display:block}
+      .fc-sep{display:none}
+      .footer-tagline{letter-spacing:0.06em}
+      .footer-social{display:grid;grid-template-columns:1fr 1fr;gap:0}
+    }
+</style>
 </head>
 <body>
 
@@ -382,7 +390,8 @@
       <p class="footer-tagline">Walking &nbsp;&bull;&nbsp; Pet Sitting &nbsp;&bull;&nbsp; Done with Love</p>
       <p class="footer-contact-line">
         <a href="mailto:youbetterwalkllc@gmail.com">youbetterwalkllc@gmail.com</a>
-        &nbsp;&nbsp;|&nbsp;&nbsp; Upper Arlington, Columbus, Ohio
+        <span class="fc-sep">&nbsp;&nbsp;|&nbsp;&nbsp;</span> <a href="tel:+16146410350">(614) 641-0350</a>
+        <span class="fc-sep">&nbsp;&nbsp;|&nbsp;&nbsp;</span> <span class="fc-loc">Upper Arlington, Columbus, Ohio</span>
       </p>
       <ul class="footer-social">
         <li><a href="https://www.instagram.com/youbetterwalkllc/" rel="noopener" aria-label="You Better Walk on Instagram">
@@ -401,6 +410,7 @@
       <li><a href="index.html#team">Team</a></li>
       <li><a href="index.html#contact">Contact</a></li>
       <li><a href="faq.html">FAQ</a></li>
+      <li><a href="columbus-dog-walker.html">Columbus Dog Walker</a></li>
       <li><a href="resources.html">Resources</a></li>
       <li><a href="privacy.html">Privacy Policy</a></li>
       <li><a href="terms.html">Terms of Service</a></li>

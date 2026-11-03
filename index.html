@@ -93,7 +93,7 @@
       --sans:'Jost',sans-serif;
       --nav-h:196px;
     }
-    html{scroll-behavior:smooth}
+    html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
     body{background:var(--cream);color:var(--charcoal);font-family:var(--sans);font-size:18px;line-height:1.78;overflow-x:hidden}
     img{max-width:100%;display:block}
     a{color:inherit;text-decoration:none}
@@ -397,7 +397,6 @@
       padding:5px 0;border-bottom:1px solid var(--cream-mid);display:flex;gap:12px;
     }
     .service-includes li::before{content:'\2713';color:var(--red);flex-shrink:0}
-    .services-addons .service-includes li::before{content:'+'}
     .service-menu{list-style:none;margin:0 0 20px;border-top:1px solid var(--cream-mid)}
     .service-menu li{
       display:flex;justify-content:space-between;align-items:baseline;gap:12px;
@@ -408,9 +407,10 @@
     .services-addons{
       background:var(--white);border:1px solid var(--cream-dark);border-radius:2px;
       padding:36px 40px;margin-top:24px;
-      display:grid;grid-template-columns:1.6fr 1fr;gap:44px;align-items:center;
     }
-    .addons-photo{width:100%;height:auto;border-radius:3px;border:1px solid var(--cream-dark)}
+    .addons-menu{columns:2;column-gap:44px;margin:0;border-top:none}
+    .addons-menu li{break-inside:avoid}
+    .addons-menu a{color:var(--red);font-weight:500}
     .addons-title{
       font-family:var(--sans);font-size:13px;font-weight:700;
       letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:6px;
@@ -435,7 +435,7 @@
     .contact-value a:hover{color:var(--red)}
     .contact-note{font-family:var(--sans);font-size:18px;font-weight:300;color:var(--warm-gray);margin-top:4px;line-height:1.75}
     .contact-form{background:var(--white);border:1px solid var(--cream-dark);border-radius:3px;padding:48px;margin-top:8px}
-    .contact-form h3{font-family:var(--sans);font-size:30px;font-weight:700;color:var(--charcoal);margin-bottom:28px}
+    .contact-form h3{font-family:var(--serif);font-size:36px;font-weight:700;color:var(--charcoal);margin-bottom:28px}
     .form-group{margin-bottom:22px}
     .form-label{display:block;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:8px}
     .form-input{
@@ -511,13 +511,29 @@
     .reviews-link{margin-top:24px;font-size:17px}
     .reviews-link a{color:var(--red);font-weight:600;text-decoration:underline;text-underline-offset:2px}
     .weekday-band{background:var(--white);border-left:3px solid var(--red);border-radius:0 6px 6px 0;padding:22px 28px;margin:0 0 32px;font-size:19px;line-height:1.6;color:var(--charcoal)}
-    .service-note{font-size:15px;line-height:1.55;color:var(--warm-gray);margin:-6px 0 14px}
+    .weekday-band{display:grid;grid-template-columns:1fr 320px;gap:32px;align-items:center}
+    .weekday-band p{margin:0}
+    .weekday-photo{display:block;width:100%;height:auto;border-radius:3px;border:1px solid var(--cream-dark)}
+    .contact-btns{display:none}
+    .service-card{display:flex;flex-direction:column}
+    .service-card .service-cta{align-self:flex-start;margin-top:auto}
+    .service-card .service-includes{margin-bottom:24px}
+    .service-menu + .service-includes{border-top:none;padding-top:0}
+    .service-note{font-size:16px;line-height:1.55;color:var(--warm-gray);margin:0 0 20px}
+    .service-card.bespoke{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+    .service-card.bespoke .service-cta{margin-top:0}
+    .service-card.bespoke .service-includes{margin-bottom:0;border-top:none;padding-top:0}
+    .service-note a{color:var(--red);font-weight:500}
     .mobile-contact{display:none}
-    @media(max-width:900px){.reviews-grid{grid-template-columns:1fr}.reviews-band{padding:52px 24px}}
+    @media(max-width:900px){.reviews-grid{grid-template-columns:1fr}.reviews-band{padding:52px 24px}.weekday-band{grid-template-columns:1fr;gap:18px}.addons-menu{columns:1}.service-card.bespoke{grid-template-columns:1fr;gap:24px}}
     @media(max-width:768px){
       .hero-proof-line{font-size:16px}
       .hero .hero-text{padding-top:84px}
       .trust-strip{font-size:14px}
+      .contact-btns{display:flex;gap:10px;margin:14px 0 14px}
+      .contact-btns a{flex:1 1 0;box-sizing:border-box;text-align:center;padding:13px 8px;border-radius:6px;font-size:16px;font-weight:600}
+      .contact-btns .cb-text{background:var(--red);color:var(--white)}
+      .contact-btns .cb-call{border:1px solid var(--red);color:var(--red)}
       .mobile-contact{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:250;background:var(--white);border-top:1px solid #E8DFDA;padding:10px 14px;gap:10px}
       .mobile-contact a{flex:1;text-align:center;padding:12px 8px;border-radius:6px;font-size:16px;font-weight:600}
       .mobile-contact .mc-text{background:var(--red);color:var(--white)}
@@ -567,7 +583,7 @@
 
       .policy-callout{padding:32px 20px;border-left:3px solid var(--red);margin-top:36px}
       .services{padding:64px 24px}
-      .services-addons{padding:28px 20px;grid-template-columns:1fr;gap:24px}
+      .services-addons{padding:28px 20px}
       .services-top{grid-template-columns:1fr;gap:24px}
       .services-grid{grid-template-columns:1fr}
 
@@ -589,7 +605,15 @@
       *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}
       .reveal{opacity:1!important;transform:none!important}
     }
-  </style>
+      @media(max-width:768px){.hero-sub,.section-body,.value-text,.bio-copy,.policy-body,.services-note,.service-desc,.contact-note,.form-input{font-weight:400}}
+
+    @media(max-width:768px){
+      .footer-contact-line a,.footer-contact-line .fc-loc{display:block}
+      .fc-sep{display:none}
+      .footer-tagline{letter-spacing:0.06em}
+      .footer-social{display:grid;grid-template-columns:1fr 1fr;gap:0}
+    }
+</style>
 </head>
 <body>
 
@@ -639,7 +663,7 @@
     </div>
     <div class="hero-proof">
       <p class="hero-proof-area">Upper Arlington, Grandview Heights, Marble Cliff, Clintonville &amp; Worthington</p>
-      <p class="hero-proof-line">Walks from $23 &bull; Visits from $26 &bull; Overnights $75</p>
+      <p class="hero-proof-line">Walks from $23 &bull; Visits from $26 &bull; Overnights&nbsp;$75</p>
       <p class="hero-proof-line">Rather text? <a href="sms:+16146410350">(614) 641-0350</a></p>
     </div>
   </div>
@@ -753,10 +777,13 @@
       <div class="divider"></div>
     </div>
     <div class="reveal reveal-d1">
-      <p class="services-note">Serving the pets and families of <strong>Upper Arlington, Grandview Heights,</strong> and <strong>Marble Cliff</strong>, with extended service to <strong>Clintonville</strong> and <strong>Worthington</strong>. <span style="font-weight:200;color:var(--warm-gray)">Extended-area visits carry a small travel fee, waived for recurring weekly clients. Additional areas considered upon request. New clients begin with a free meet and greet; once you're with us, we ask for 48 hours' notice on new bookings.</span></p>
+      <p class="services-note">Serving the pets and families of <strong>Upper Arlington, Grandview Heights,</strong> and <strong>Marble Cliff</strong>, with extended service to <strong>Clintonville</strong> and <strong>Worthington</strong>. <span style="font-weight:200;color:var(--warm-gray)">Extended-area visits carry a small travel fee, waived for recurring weekly clients. Additional areas considered upon request. See our <a href="columbus-dog-walker.html" style="color:var(--red);font-weight:500">Columbus dog walker page</a>. New clients begin with a free meet and greet; once you're with us, we ask for 48 hours' notice on new bookings.</span></p>
     </div>
   </div>
-  <p class="weekday-band"><strong>Need someone during the workday?</strong> We keep regular weekday midday visits and walks for busy households. A visit covers food, water, potty breaks, and play. Add a 20-minute walk to any visit for $15.</p>
+  <div class="weekday-band">
+    <p><strong>Need someone during the workday?</strong> We keep regular weekday midday visits and walks for busy households. A visit covers food, water, potty breaks, and play. Add a 20-minute walk to any visit for $15.</p>
+    <img class="weekday-photo" src="images/onedog-buddies.webp" alt="Steve grinning on the couch while a small white pup waits by the ball for their turn to play" width="1000" height="750" loading="lazy" decoding="async"/>
+  </div>
   <div class="services-grid">
     <div class="service-card reveal reveal-d1">
       <h3 class="service-name">Dog Walking</h3>
@@ -778,7 +805,7 @@
     <div class="service-card reveal reveal-d2">
       <h3 class="service-name">Pet Sitting</h3>
       <p class="service-price">From $26</p>
-      <p class="service-tagline">Drop-in visits &amp; overnights for dogs and cats</p>
+      <p class="service-tagline">Drop-in visits for dogs and cats</p>
       <p class="service-desc">In-home visits for dogs and cats while you are away. Your pet stays where they are most comfortable, cared for by someone who genuinely wants to be there.</p>
       <ul class="service-menu">
         <li><span>20-minute visit</span><span>$26</span></li>
@@ -786,9 +813,7 @@
         <li><span>45-minute visit</span><span>$38</span></li>
         <li><span>60-minute visit</span><span>$47</span></li>
         <li><span>Add a 20-minute walk to any visit</span><span>$15</span></li>
-        <li><span>Overnight stay<br><a href="faq.html#overnight" style="color:var(--red);font-weight:500;font-size:15px">(what's included?)</a></span><span>$75 / night</span></li>
       </ul>
-      <p class="service-note">Overnights run about 7pm to 7am. A full day with one 30-minute midday visit is $107.</p>
       <ul class="service-includes">
         <li>Feeding, fresh water, litter</li>
         <li>Enrichment and play time</li>
@@ -799,10 +824,29 @@
       <a href="#contact" class="service-cta">Inquire Now</a>
     </div>
     <div class="service-card reveal reveal-d3">
-      <h3 class="service-name">Bespoke Care</h3>
-      <p class="service-price">Let's Talk</p>
-      <p class="service-tagline">Custom arrangements for every household</p>
-      <p class="service-desc">Every household is different, just like every pet. Built for situations that don't fit a standard package.</p>
+      <h3 class="service-name">Overnight Stays</h3>
+      <p class="service-price">$75 a night</p>
+      <p class="service-tagline">Evening, overnight, and morning care</p>
+      <p class="service-desc">We stay in your home from about 7pm to 7am. Your pet keeps their bed, their smells, and their schedule.</p>
+      <ul class="service-includes">
+        <li>Dinner, play, and settling in</li>
+        <li>20-minute dog walk each evening and morning</li>
+        <li>Breakfast and a proper goodbye</li>
+        <li>Visit report with a photo</li>
+        <li>Mail brought in, plants watered</li>
+        <li>Free meet and greet before we start</li>
+      </ul>
+      <p class="service-note"><a href="faq.html#overnight">How overnights work</a></p>
+      <a href="#contact" class="service-cta">Inquire Now</a>
+    </div>
+    <div class="service-card bespoke reveal reveal-d1">
+      <div>
+        <h3 class="service-name">Bespoke Care</h3>
+        <p class="service-price">Let's Talk</p>
+        <p class="service-tagline">Custom arrangements for every household</p>
+        <p class="service-desc">Every household is different, just like every pet. Built for situations that don't fit a standard package.</p>
+        <a href="#contact" class="service-cta">Inquire Now</a>
+      </div>
       <ul class="service-includes">
         <li>Walk + Pet Sitting Blend/Combo</li>
         <li>Multiple animals, any combination</li>
@@ -810,25 +854,23 @@
         <li>Anything else - just ask</li>
         <li>Free meet and greet before we start</li>
       </ul>
-      <a href="#contact" class="service-cta">Inquire Now</a>
     </div>
   </div>
-  <p class="pricing-footnote" style="font-size:12px;font-weight:300;line-height:1.6;color:var(--warm-gray);text-align:center;margin-top:14px">* Existing clients keep the rates in their current service agreement.</p>
+  <p class="pricing-footnote" style="font-size:14px;font-weight:400;line-height:1.6;color:var(--warm-gray);text-align:center;margin-top:14px">* Existing clients keep the rates in their current service agreement.</p>
   <div class="services-addons reveal">
     <div>
       <p class="addons-title">Add-Ons</p>
-      <ul class="service-includes" style="border-top:none;padding-top:4px">
-        <li>Add a 20-minute walk to any visit: $15</li>
-        <li>Additional pet on the same sitting visit: $10</li>
-        <li>Additional dog on an overnight stay: $25 per night</li>
-        <li>Additional cat on an overnight stay: $15 per night</li>
-        <li>Second dog, walked back-to-back: $5 off the second walk</li>
-        <li>Puppies under one year: $5 per visit</li>
-        <li>Major holidays: $10 per visit, $25 per overnight <a href="faq.html#policies" style="color:var(--red);font-weight:500">(see dates)</a></li>
-        <li>Extended travel: quoted at your meet and greet</li>
+      <ul class="service-menu addons-menu">
+        <li><span>20-minute walk on any visit</span><span>$15</span></li>
+        <li><span>Extra pet, per visit</span><span>$10</span></li>
+        <li><span>Extra dog, per overnight</span><span>$25</span></li>
+        <li><span>Extra cat, per overnight</span><span>$15</span></li>
+        <li><span>Second dog, back-to-back walk</span><span>$5 off</span></li>
+        <li><span>Puppy under 1, per visit</span><span>$5</span></li>
+        <li><span>Holidays <a href="faq.html#policies">(dates)</a></span><span>$10 visit, $25 night</span></li>
+        <li><span>Extended travel</span><span>Quoted</span></li>
       </ul>
     </div>
-    <img class="addons-photo" src="images/onedog-buddies.webp" alt="Steve grinning on the couch while a small white pup waits by the ball for their turn to play" width="1000" height="750" loading="lazy" decoding="async"/>
   </div>
 </section>
 
@@ -845,7 +887,7 @@
 
 <!-- ABOUT / TEAM -->
 <section class="section about" id="team">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:end;margin-bottom:56px;" class="reveal">
+  <div style="margin-bottom:56px;" class="reveal">
     <div>
       <p class="section-eyebrow" style="font-weight:700;font-size:17px">The Team</p>
       <h2 class="section-headline" style="font-size:clamp(52px,5.2vw,78px)">Meet Brent<br>and <em>Steve.</em></h2>
@@ -918,12 +960,13 @@
         <div>
           <p class="contact-label">Call or Text</p>
           <p class="contact-value" style="font-weight:800"><a href="tel:+16146410350">(614) 641-0350</a></p>
+          <div class="contact-btns"><a class="cb-call" href="tel:+16146410350">Call</a><a class="cb-text" href="sms:+16146410350">Text</a></div>
           <p class="contact-note">Email and texts are welcome. You'll hear back within 24 hours or one business day.</p>
         </div>
         <div>
           <p class="contact-label">Service Area</p>
           <p class="contact-value" style="font-size:19px;font-weight:800">Upper Arlington <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red)">(Home Base)</span>,<br>Grandview Heights &amp; Marble Cliff</p>
-          <p class="contact-value" style="font-size:16px;font-weight:600;margin-top:6px">Extended area: Clintonville &amp; Worthington <span style="font-size:12px;font-weight:400;color:var(--warm-gray)">(small travel fee, waived for recurring weekly clients)</span></p>
+          <p class="contact-value" style="font-size:16px;font-weight:600;margin-top:6px">Extended area: Clintonville &amp; Worthington <span style="font-family:var(--sans);font-size:14px;font-weight:400;color:var(--warm-gray)">(small travel fee, waived for recurring weekly clients)</span></p>
           <p class="contact-note"><strong>Not sure if you are in range? Ask anyway.</strong> Distance factors into scheduling and rates, but some people (and pets) genuinely need help, and we would rather have the conversation than lose a good client family or help a pet that needs it.</p>
         </div>
         <div>
@@ -975,8 +1018,8 @@
       <p class="footer-tagline">Walking &nbsp;&bull;&nbsp; Pet Sitting &nbsp;&bull;&nbsp; Done with Love</p>
       <p class="footer-contact-line">
         <a href="mailto:youbetterwalkllc@gmail.com">youbetterwalkllc@gmail.com</a>
-        &nbsp;&nbsp;|&nbsp;&nbsp; <a href="tel:+16146410350">(614) 641-0350</a>
-        &nbsp;&nbsp;|&nbsp;&nbsp; Upper Arlington, Columbus, Ohio
+        <span class="fc-sep">&nbsp;&nbsp;|&nbsp;&nbsp;</span> <a href="tel:+16146410350">(614) 641-0350</a>
+        <span class="fc-sep">&nbsp;&nbsp;|&nbsp;&nbsp;</span> <span class="fc-loc">Upper Arlington, Columbus, Ohio</span>
       </p>
       <ul class="footer-social">
         <li><a href="https://www.instagram.com/youbetterwalkllc/" rel="noopener" aria-label="You Better Walk on Instagram">
@@ -996,6 +1039,7 @@
       <li><a href="#contact">Contact</a></li>
       <li><a href="process.html">Our Process</a></li>
       <li><a href="faq.html">FAQ</a></li>
+      <li><a href="columbus-dog-walker.html">Columbus Dog Walker</a></li>
       <li><a href="resources.html">Resources</a></li>
       <li><a href="privacy.html">Privacy Policy</a></li>
       <li><a href="terms.html">Terms of Service</a></li>
@@ -1089,6 +1133,7 @@
     if (!a || typeof gtag !== 'function') return;
     var h = a.getAttribute('href');
     if (h.indexOf('tel:') === 0) gtag('event', 'phone_click', { link_url: h });
+    else if (h.indexOf('sms:') === 0) gtag('event', 'text_click', { link_url: h });
     else if (h.indexOf('mailto:') === 0) gtag('event', 'email_click', { link_url: h });
     else if (h.indexOf('venmo.com') !== -1) gtag('event', 'venmo_click', { link_url: h });
   });
