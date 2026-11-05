@@ -408,7 +408,10 @@
     .services-addons{
       background:var(--white);border:1px solid var(--cream-dark);border-radius:2px;
       padding:36px 40px;margin-top:24px;
+      display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:40px;align-items:center;
     }
+    .addons-photo{display:block;width:100%;height:auto;border-radius:3px;border:1px solid var(--cream-dark)}
+    @media(max-width:1180px){.services-addons{grid-template-columns:minmax(0,1fr);gap:24px}.addons-photo{max-width:420px;justify-self:center}}
     .addons-menu{columns:2;column-gap:44px;margin:0;border-top:none}
     .addons-menu li{break-inside:avoid}
     .addons-menu a{color:var(--red);font-weight:500}
@@ -511,10 +514,6 @@
     .review-name{font-size:15px;font-weight:600;color:var(--warm-gray)}
     .reviews-link{margin-top:24px;font-size:17px}
     .reviews-link a{color:var(--red);font-weight:600;text-decoration:underline;text-underline-offset:2px}
-    .weekday-band{background:var(--white);border-left:3px solid var(--red);border-radius:0 6px 6px 0;padding:22px 28px;margin:0 0 32px;font-size:19px;line-height:1.6;color:var(--charcoal)}
-    .weekday-band{display:grid;grid-template-columns:1fr 320px;gap:32px;align-items:center}
-    .weekday-band p{margin:0}
-    .weekday-photo{display:block;width:100%;height:auto;border-radius:3px;border:1px solid var(--cream-dark)}
     .contact-btns{display:none}
     .service-card{display:flex;flex-direction:column}
     .service-card .service-cta{align-self:flex-start;margin-top:auto}
@@ -526,7 +525,7 @@
     .service-card.bespoke .service-includes{margin-bottom:0;border-top:none;padding-top:0}
     .service-note a{color:var(--red);font-weight:500}
     .mobile-contact{display:none}
-    @media(max-width:900px){.reviews-grid{grid-template-columns:1fr}.reviews-band{padding:52px 24px}.weekday-band{grid-template-columns:1fr;gap:18px}.addons-menu{columns:1}.service-card.bespoke{grid-template-columns:1fr;gap:24px}}
+    @media(max-width:900px){.reviews-grid{grid-template-columns:1fr}.reviews-band{padding:52px 24px}.addons-menu{columns:1}.service-card.bespoke{grid-template-columns:1fr;gap:24px}}
     @media(max-width:768px){
       .hero-proof-line{font-size:16px}
       .hero .hero-text{padding-top:84px}
@@ -788,10 +787,6 @@
       <p class="services-note">Serving the pets and families of <strong>Upper Arlington, Grandview Heights,</strong> and <strong>Marble Cliff</strong>, with extended service to <strong>Clintonville</strong> and <strong>Worthington</strong>. <span style="font-weight:200;color:var(--warm-gray)">Extended-area visits carry a small travel fee, waived for recurring weekly clients. Additional areas considered upon request. See our <a href="columbus-dog-walker.html" style="color:var(--red);font-weight:500">Columbus dog walker page</a>. New clients begin with a free meet and greet; once you're with us, we ask for 48 hours' notice on new bookings.</span></p>
     </div>
   </div>
-  <div class="weekday-band">
-    <p><strong>Need someone during the workday?</strong> We keep regular weekday midday visits and walks for busy households. A visit covers food, water, potty breaks, and play. Add a 20-minute walk to any visit for $15.</p>
-    <img class="weekday-photo" src="images/onedog-buddies.webp" alt="Steve grinning on the couch while a small white pup waits by the ball for their turn to play" width="1000" height="750" loading="lazy" decoding="async"/>
-  </div>
   <div class="services-grid">
     <div class="service-card reveal reveal-d1">
       <h3 class="service-name">Dog Walking</h3>
@@ -879,6 +874,7 @@
         <li><span>Extended travel</span><span>Quoted</span></li>
       </ul>
     </div>
+    <img class="addons-photo" src="images/onedog-buddies.webp" alt="Steve grinning on the couch while a small white pup waits by the ball for their turn to play" width="1000" height="750" loading="lazy" decoding="async"/>
   </div>
 </section>
 
